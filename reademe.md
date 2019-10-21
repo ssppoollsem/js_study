@@ -1,4 +1,7 @@
 # 자바스크립트 
 
-'이거'
-₩저거₩
+`<LiveCode
+  title="How to greet people"
+  size="small"
+  code="<p>Hello World!</p>"
+/>`
