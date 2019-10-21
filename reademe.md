@@ -8,3 +8,11 @@ sum(1,2); // 3
 ```
 
 ## 두번째 
+```js
+const a = {
+    name : 'jjs',
+    age : 25
+}
+console.log(a.name);
+
+```
