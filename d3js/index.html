@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="chart"></div>
+    <script>
+        // var data = [40,20,10];
+
+        // var svgContainer = d3.select('body').append('svg').attr('width',400).attr('height',400);
+
+        // var circles = svgContainer.selectAll('circle').data(data).enter().append('circle');
+
+        // var circleAtributes = circles.attr('cx',50).attr('cy',50).attr('r',function(d){return d;}).style('fill',function(d){return '#' + d + d + d})
+
+
+        var jsonCircles = [
+        { 
+            "x_axis": 30,
+            "y_axis": 30,
+            "radius": 20,
+            "color" : "green"
+        }, {
+            "x_axis": 70,
+            "y_axis": 70,
+            "radius": 20,
+            "color" : "purple"
+        }, {
+            "x_axis": 110,
+            "y_axis": 100,
+            "radius": 20,
+            "color" : "red"
+        }];
+
+        var svgContainer = d3.select('body').append('svg').attr('width',400).attr('height',400);
+
+        var circles = svgContainer.selectAll('circle').data(jsonCircles).enter().append('circle').attr('cx',(d) => d.x_axis).attr('cy',(d) => d.y_axis).attr('r',(d) => d.radius).attr('fill',(d) => d.color)
+
+        
+        // d3.select('.chart')
+        //     .selectAll('div')
+        //     .data(data)
+        //     .enter()
+        //     .append('div')
+        //     .style('width', function(d){return d + 'px'})
+        //     .text(function(d){return d})
+
+
+        // var w = 400, h = 400;
+        // var svg = d3.select('body')
+        //             .append('svg')
+        //             .attr('width',w)
+        //             .attr('height',h)
+        //             .attr('class','svgTest');
+        
+        // svg.selectAll('rect')
+        //     .data(data)
+        //     .enter()
+        //     .append('rect')
+        //     .attr('x' , function(d, i){
+        //         return i * (w / data.length);
+        //     })
+        //     .attr('y', function(d){
+        //         return h - d;
+        //     })
+        //     .attr('width', w / data.length - 1)
+        //     .attr('height', function(d){
+        //         return d;
+        //     })
+        //     .attr('fill','hotpink')
+        
+        // svg.selectAll('text')
+        //     .data(data)
+        //     .enter()
+        //     .append('text')
+        //     .text(function(d){
+        //         return d;
+        //     })
+        //     .attr('x', function(d, i){
+        //         return i * (w / data.length) + (w / data.length) / 2;
+        //     })
+        //     .attr('y', function(d){
+        //         return h - d + 20;
+        //     })
+        //     .attr('font-family', 'sans-serif')
+        //     .attr('font-size', '24px')
+        //     .attr('fill', 'white')
+        //     .attr('text-anchor', 'middle')
+    </script>
+    
+</body>
+</html>
