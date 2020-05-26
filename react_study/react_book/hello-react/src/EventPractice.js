@@ -2,6 +2,9 @@ import React,{Component} from 'react';
 
 class EventPractice extends Component {
     render() {
+        state = {
+            message : ''
+        }
         return (
             <>
                 <h1>이벤트 연습</h1>
