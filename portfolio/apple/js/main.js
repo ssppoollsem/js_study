@@ -23,6 +23,7 @@
             values: {
                 videoImageCount: 300,
                 imageSequence: [0,299],
+                canvas_opacity: [1, 0, {start:0.9, end:1}],
                 messageA_opacity_in: [0, 1, {start:0.1, end:0.2}],
                 messageB_opacity_in: [0, 1, {start:0.3, end:0.4}],
                 messageC_opacity_in: [0, 1, {start:0.5, end:0.6}],
@@ -61,9 +62,16 @@
                 messageB: document.querySelector('#scroll-section-2 .b'),
                 messageC: document.querySelector('#scroll-section-2 .c'),
                 pinB: document.querySelector('#scroll-section-2 .b .pin'),
-                pinC: document.querySelector('#scroll-section-2 .c .pin')
+                pinC: document.querySelector('#scroll-section-2 .c .pin'),
+                canvas: document.querySelector('#video-canvas-1'),
+                context: document.querySelector('#video-canvas-1').getContext('2d'),
+                videoImages: []
             },
             values: {
+                videoImageCount: 960,
+                imageSequence: [0,959],
+                canvas_opacity_in: [0, 1, {start:0, end:0.1}],
+                canvas_opacity_out: [1, 0, {start:0.95, end:1}],
                 messageA_opacity_in: [0, 1, {start:0.25, end:0.3}],
                 messageB_opacity_in: [0, 1, {start:0.6, end:0.65}],
                 messageC_opacity_in: [0, 1, {start:0.87, end:0.92}],
@@ -103,8 +111,15 @@
         let imgElem;
         for(let i=0; i<sceneInfo[0].values.videoImageCount; i++){
             imgElem = new Image();
-            imgElem.src =  `./image/video/IMG_${6726 + i}.jpg`;
+            imgElem.src =  `./image/video/001/IMG_${6726 + i}.jpg`;
             sceneInfo[0].objs.videoImages.push(imgElem);
+        }
+
+        let imgElem2;
+        for(let i=0; i<sceneInfo[2].values.videoImageCount; i++){
+            imgElem2 = new Image();
+            imgElem2.src =  `./image/video/002/IMG_${7027 + i}.jpg`;
+            sceneInfo[2].objs.videoImages.push(imgElem2);
         }
     }
 
@@ -134,6 +149,10 @@
             }
         }
         document.body.setAttribute('id',`show-scene-${currentScene}`);
+        
+        const heightRatio = window.innerHeight / 1080;
+        sceneInfo[0].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
+        sceneInfo[2].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
     }
 
     function calcValues(values, currentYOffset) {
@@ -177,6 +196,7 @@
             case 0:
                 let sequence = Math.round(calcValues(values.imageSequence, currentYOffset));
                 objs.context.drawImage(objs.videoImages[sequence], 0, 0);
+                objs.canvas.style.opacity = calcValues(values.canvas_opacity, currentYOffset);
                 if(scrollRatio <= 0.22) {
                     // in
                     objs.messageA.style.opacity = calcValues(values.messageA_opacity_in, currentYOffset);
@@ -219,6 +239,15 @@
                 
                 break;
             case 2:
+                let sequence2 = Math.round(calcValues(values.imageSequence, currentYOffset));
+                objs.context.drawImage(objs.videoImages[sequence2], 0, 0);
+                
+                if(scrollRatio <= 0.5) {
+                    objs.canvas.style.opacity = calcValues(values.canvas_opacity_in, currentYOffset);
+                }else {
+                    objs.canvas.style.opacity = calcValues(values.canvas_opacity_out, currentYOffset);
+                }
+
                 if(scrollRatio <= 0.32) {
                     // in
                     objs.messageA.style.opacity = calcValues(values.messageA_opacity_in, currentYOffset);
@@ -287,7 +316,10 @@
         yOffset = window.pageYOffset;
         scrollLoop();
     })
-    window.addEventListener('load',setLayout);
+    window.addEventListener('load', () => {
+        setLayout();
+        sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
+    });
     window.addEventListener('resize', setLayout);
 
 })();

@@ -11,14 +11,14 @@ a {color:#292931; text-decoration:none}
 .product-name {font-size:1.2rem; font-weight:bold; margin-right:auto}
 .local-nav-links > a:not(.product-name) {font-size:0.8rem; margin-left:2em}
 .scroll-section {padding-top:50vh}
-#scroll-section-0 > h1 {font-size:4rem; text-align:center}
+#scroll-section-0 > h1 {position:relative; top:-10vh; font-size:4rem; text-align:center; z-index:5}
 .main-message {top:35vh; display:flex; height:3em; font-size:2.5rem; align-items:center; justify-content:center; opacity:0}
 .main-message p {line-height:1.2; font-weight:bold; text-align:center}
 .main-message small {display:block; margin-bottom:0.5em; font-size:1.2rem}
 #scroll-section-2 .main-message {font-size:3.5rem}
 .description {max-width:1000px; margin:0 auto; padding:0 1rem; font-size:1.2rem; color:#888}
 .description strong {float:left; margin-right:0.2em; font-size:3rem; color:#000}
-.desc-message {width:50%; font-weight:bold}
+.desc-message {width:50%; font-weight:bold; opacity:0}
 .pin {width:1px; height:100px; background:#000}
 #scroll-section-2 .b {top:10%; left:40%}
 #scroll-section-2 .c {top:15%; left:45%}
@@ -31,7 +31,9 @@ body#show-scene-0 #scroll-section-0 .sticky-elem,
 body#show-scene-1 #scroll-section-1 .sticky-elem,
 body#show-scene-2 #scroll-section-2 .sticky-elem,
 body#show-scene-3 #scroll-section-3 .sticky-elem {display:block}
-.sticky-elem-canvas {top:0; background:#ddd}
+.sticky-elem-canvas {top:0; height:100%}
+.sticky-elem-canvas canvas {position:absolute; top:50%; left:50%}
+
 
 @media (min-width:1024px){
     #scroll-section-0 h1 {font-size:9vw}
