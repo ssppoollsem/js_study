@@ -10,7 +10,7 @@ function countActiveUsers(users){
 const initialState = {
   users: [
     {
-        id : 1,
+        id : 12,
         username : 'velopert',
         email : 'velopert@naver.com',
         active: true
