@@ -1,28 +1,14 @@
 <template>
-    <div>
-        <child-component :parent-message="msg" @print="val => printMessage(val)"></child-component>
-    </div>
+  <div id="app"></div>
 </template>
 
 <script>
-    import ChildComponent from './components/child-component'
-
-    export default {
-        name: 'app',
-        components: {ChildComponent},
-        data() {
-            return {
-                msg: '안녕하세요'
-            }
-        },
-        methods: {
-            printMessage (val) {
-                console.log(val)
-            }
-        }
-    }
+  export default {
+    name: 'app',
+    components: {}
+  }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 </style>
