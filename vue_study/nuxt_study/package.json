@@ -1,9 +1,9 @@
 {
-  "name": "vuex_study",
+  "name": "nuxt_study",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt --hostname <host> --port <port>",
+    "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"

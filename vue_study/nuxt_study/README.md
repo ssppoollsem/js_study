@@ -1,4 +1,4 @@
-# vuex_study
+# nuxt_study
 
 ## Build Setup
 
