@@ -2,22 +2,19 @@
   {
     "name": "profile",
     "path": "/profile",
-    "component": "/Users/imsi/Documents/js_study/vue_study/zeroCho/nodebird/ch1/front/pages/profile.vue",
-    "chunkName": "pages/profile",
-    "_name": "_e3693716"
+    "component": "D:\\\\서재진\\\\스터디\\\\js_study\\\\vue_study\\\\zeroCho\\\\nodebird\\\\ch1\\\\front\\\\pages\\\\profile.vue",
+    "chunkName": "pages/profile"
   },
   {
     "name": "signup",
     "path": "/signup",
-    "component": "/Users/imsi/Documents/js_study/vue_study/zeroCho/nodebird/ch1/front/pages/signup.vue",
-    "chunkName": "pages/signup",
-    "_name": "_ea316708"
+    "component": "D:\\\\서재진\\\\스터디\\\\js_study\\\\vue_study\\\\zeroCho\\\\nodebird\\\\ch1\\\\front\\\\pages\\\\signup.vue",
+    "chunkName": "pages/signup"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/imsi/Documents/js_study/vue_study/zeroCho/nodebird/ch1/front/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_978837c4"
+    "component": "D:\\\\서재진\\\\스터디\\\\js_study\\\\vue_study\\\\zeroCho\\\\nodebird\\\\ch1\\\\front\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
   }
 ]

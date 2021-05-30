@@ -13,8 +13,8 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_d5632af8 from 'nuxt_plugin_plugin_d5632af8' // Source: ./vuetify/plugin.js (mode: 'all')
-import nuxt_plugin_axios_1ec723c0 from 'nuxt_plugin_axios_1ec723c0' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_plugin_4cc2896a from 'nuxt_plugin_plugin_4cc2896a' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_axios_6a3789ed from 'nuxt_plugin_axios_6a3789ed' // Source: .\\axios.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -211,12 +211,12 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_d5632af8 === 'function') {
-    await nuxt_plugin_plugin_d5632af8(app.context, inject)
+  if (typeof nuxt_plugin_plugin_4cc2896a === 'function') {
+    await nuxt_plugin_plugin_4cc2896a(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_1ec723c0 === 'function') {
-    await nuxt_plugin_axios_1ec723c0(app.context, inject)
+  if (typeof nuxt_plugin_axios_6a3789ed === 'function') {
+    await nuxt_plugin_axios_6a3789ed(app.context, inject)
   }
 
   // Lock enablePreview in context
@@ -228,7 +228,7 @@ async function createApp(ssrContext, config = {}) {
 
   // Wait for async component to be resolved first
   await new Promise((resolve, reject) => {
-    router.push(app.context.route.fullPath, resolve, (err) => {
+    router.replace(app.context.route.fullPath, resolve, (err) => {
       // https://github.com/vuejs/vue-router/blob/v3.4.3/src/util/errors.js
       if (!err._isRouter) return reject(err)
       if (err.type !== 2 /* NavigationFailureType.redirected */) return resolve()
