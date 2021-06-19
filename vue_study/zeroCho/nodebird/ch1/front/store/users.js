@@ -1,7 +1,25 @@
 export const state = () => ({
     me: null,
-    followerList: [],
-    followingList: [],
+    followerList: [{
+        id: 1,
+        nickname: '나로초'
+    }, {
+        id: 2,
+        nickname: '제로초'
+    },{
+        id: 3,
+        nickname: '삼로초'
+    },],
+    followingList: [{
+        id: 1,
+        nickname: '바바초'
+    },{
+        id: 2,
+        nickname: '다로초'
+    },{
+        id: 3,
+        nickname: '가로초'
+    },],
 });
 
 // 동기적작업
@@ -12,6 +30,21 @@ export const mutations = {
     },
     changeNickname(state, payload) {
         state.me.nickname = payload.nickname;
+    },
+    removeFollower(state, payload) {
+        const index = state.followerList.findIndex(v => v.id === payload.id);
+        state.followerList.splice(index, 1);
+    },
+    removeFollowing(state, payload) {
+        const index = state.followingList.findIndex(v => v.id === payload.id);
+        state.followingList.splice(index, 1);
+    },
+    addFollower(state, payload) {
+        state.followerList.push(payload)
+    },
+    addFollowing(state, payload) {
+        state.followingList.push(payload)
+
     },
 };
 
@@ -29,5 +62,17 @@ export const actions = {
     },
     changeNickname({ commit }, payload) {
         commit('changeNickname', payload);
+    },
+    addFollowing({ commit }, payload){ 
+        commit('addFollowing',payload);
+    },
+    addFollower({ commit }, payload){
+        commit('addFollower ',payload);
+    },
+    removeFollowing({ commit }, payload) {
+        commit('removeFollowing', payload);
+    },
+    removeFollower({ commit }, payload) {
+        commit('removeFollower', payload);
     },
 };
