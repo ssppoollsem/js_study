@@ -14,6 +14,13 @@
     "_name": "_ea316708"
   },
   {
+    "name": "post-id",
+    "path": "/post/:id",
+    "component": "/Users/imsi/Documents/js_study/vue_study/zeroCho/nodebird/ch1/front/pages/post/_id/index.vue",
+    "chunkName": "pages/post/_id/index",
+    "_name": "_537de5f2"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/Users/imsi/Documents/js_study/vue_study/zeroCho/nodebird/ch1/front/pages/index.vue",
