@@ -27,8 +27,30 @@ export default {
         },
         mainPosts() {
             return this.$store.state.posts.mainPosts;
+        },
+        hasMorePost() {
+            return this.$store.state.posts.hasMorePost;
         }
-    }
+    },
+    fetch({ store }) {
+        store.dispatch('posts/loadPosts');
+    },
+    mounted() {
+        // window는 created에서는 사용하지 못한다.
+        window.addEventListener('scroll', this.onScroll);
+    },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.onScroll);
+    },
+    methods: {
+        onScroll() {
+            if(window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 200) {
+                if(this.hasMorePost) {
+                    this.$store.dispatch('posts/loadPosts');
+                }
+            }
+        },
+    }, 
 }
 </script>
 
