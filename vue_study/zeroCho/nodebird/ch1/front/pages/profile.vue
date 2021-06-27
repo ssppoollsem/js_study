@@ -72,6 +72,7 @@ export default {
             return this.$store.state.users.followerList;
         }
     },
+    middleware: 'authenticated',
 };
 </script>
 
