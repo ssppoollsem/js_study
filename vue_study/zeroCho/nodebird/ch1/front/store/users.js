@@ -1,26 +1,15 @@
 export const state = () => ({
     me: null,
-    followerList: [{
-        id: 1,
-        nickname: '나로초'
-    }, {
-        id: 2,
-        nickname: '제로초'
-    },{
-        id: 3,
-        nickname: '삼로초'
-    },],
-    followingList: [{
-        id: 1,
-        nickname: '바바초'
-    },{
-        id: 2,
-        nickname: '다로초'
-    },{
-        id: 3,
-        nickname: '가로초'
-    },],
+    followerList: [],
+    followingList: [],
+    hasMoreFollowing: true,
+    hasMoreFollower: true,
 });
+
+// 서버 쪽 작업 전 임의로 팔로잉,팔로워 등 제한을 둠
+const totalFollowers = 8;
+const totalFollowings = 6;
+const limit = 3;
 
 // 동기적작업
 export const mutations = {
@@ -45,6 +34,24 @@ export const mutations = {
     addFollowing(state, payload) {
         state.followingList.push(payload)
 
+    },
+    loadFollowings(state) {
+        const diff = totalFollowings - state.followingList.length;
+        const fakeUsers = Array(diff > limit ? limit : diff).fill().map(v => ({
+            id: Math.random().toString(),
+            nickname: Math.floor(Math.random() * 1000)
+        }));
+        state.followingList = state.followingList.concat(fakeUsers);
+        state.hasMoreFollowing = fakeUsers.length === limit;
+    },
+    loadFollowers(state) {
+        const diff = totalFollowers - state.followerList.length;
+        const fakeUsers = Array(diff > limit ? limit : diff).fill().map(v => ({
+            id: Math.random().toString(),
+            nickname: Math.floor(Math.random() * 1000)
+        }));
+        state.followerList = state.followerList.concat(fakeUsers);
+        state.hasMoreFollower = fakeUsers.length === limit;
     },
 };
 
@@ -74,5 +81,15 @@ export const actions = {
     },
     removeFollower({ commit }, payload) {
         commit('removeFollower', payload);
+    },
+    loadFollowings({ commit, state }, payload) {
+        if(state.hasMoreFollowing) {
+            commit('loadFollowings');
+        }
+    },
+    loadFollowers({ commit, state }, payload) {
+        if(state.hasMoreFollower) {
+            commit('loadFollowers');
+        }
     },
 };
