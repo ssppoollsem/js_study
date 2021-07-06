@@ -9,18 +9,17 @@
 </template>
 
 <script>
-import PostCard from '~/components/PostCard '
+import PostCard from '~/components/PostCard';
 export default {
     components: { PostCard },
     computed: {
         post() {
-            return this.$store.state.posts.mainPosts.find(v => v.id === parseInt(this.$route.params.id, 10)); // params는 문자열이기 때문에 parseInt 해줘야됨
-        }
-    }
-
-}
+            return this.$store.state.posts.mainPosts.find(
+                v => v.id === parseInt(this.$route.params.id, 10),
+            ); // params는 문자열이기 때문에 parseInt 해줘야됨
+        },
+    },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

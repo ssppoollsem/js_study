@@ -2,43 +2,43 @@
   {
     "name": "profile",
     "path": "/profile",
-    "component": "/Users/imsi/Documents/js_study/vue_study/zeroCho/nodebird/ch1/front/pages/profile.vue",
+    "component": "D:\\\\서재진\\\\스터디\\\\js_study\\\\vue_study\\\\zeroCho\\\\nodebird\\\\ch1\\\\front\\\\pages\\\\profile.vue",
     "chunkName": "pages/profile",
-    "_name": "_e3693716"
+    "_name": "_7e36b84c"
   },
   {
     "name": "signup",
     "path": "/signup",
-    "component": "/Users/imsi/Documents/js_study/vue_study/zeroCho/nodebird/ch1/front/pages/signup.vue",
+    "component": "D:\\\\서재진\\\\스터디\\\\js_study\\\\vue_study\\\\zeroCho\\\\nodebird\\\\ch1\\\\front\\\\pages\\\\signup.vue",
     "chunkName": "pages/signup",
-    "_name": "_ea316708"
+    "_name": "_00260c77"
   },
   {
     "name": "hashtag-user-id",
     "path": "/hashtag/user/:id",
-    "component": "/Users/imsi/Documents/js_study/vue_study/zeroCho/nodebird/ch1/front/pages/hashtag/user/_id/index.vue",
+    "component": "D:\\\\서재진\\\\스터디\\\\js_study\\\\vue_study\\\\zeroCho\\\\nodebird\\\\ch1\\\\front\\\\pages\\\\hashtag\\\\user\\\\_id\\\\index.vue",
     "chunkName": "pages/hashtag/user/_id/index",
-    "_name": "_405d1e00"
+    "_name": "_394fd460"
   },
   {
     "name": "hashtag-id",
     "path": "/hashtag/:id",
-    "component": "/Users/imsi/Documents/js_study/vue_study/zeroCho/nodebird/ch1/front/pages/hashtag/_id/index.vue",
+    "component": "D:\\\\서재진\\\\스터디\\\\js_study\\\\vue_study\\\\zeroCho\\\\nodebird\\\\ch1\\\\front\\\\pages\\\\hashtag\\\\_id\\\\index.vue",
     "chunkName": "pages/hashtag/_id/index",
-    "_name": "_6e11f706"
+    "_name": "_9e329a56"
   },
   {
     "name": "post-id",
     "path": "/post/:id",
-    "component": "/Users/imsi/Documents/js_study/vue_study/zeroCho/nodebird/ch1/front/pages/post/_id/index.vue",
+    "component": "D:\\\\서재진\\\\스터디\\\\js_study\\\\vue_study\\\\zeroCho\\\\nodebird\\\\ch1\\\\front\\\\pages\\\\post\\\\_id\\\\index.vue",
     "chunkName": "pages/post/_id/index",
-    "_name": "_537de5f2"
+    "_name": "_c9f4edd2"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/imsi/Documents/js_study/vue_study/zeroCho/nodebird/ch1/front/pages/index.vue",
+    "component": "D:\\\\서재진\\\\스터디\\\\js_study\\\\vue_study\\\\zeroCho\\\\nodebird\\\\ch1\\\\front\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
-    "_name": "_978837c4"
+    "_name": "_f3108e7a"
   }
 ]
