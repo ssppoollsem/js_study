@@ -112,7 +112,7 @@ export default {
     .poster {
         $width: 500px;
         width: $width;
-        height: $width * (calc(3/2));
+        height: $width * (3/2);
         margin-right: 70px;
         flex-shrink: 0;
     }
@@ -157,7 +157,7 @@ export default {
     .poster {
         flex-shrink: 0;
         width: 500px;
-        height: 500px * calc(3/2) ;
+        height: 500px * 3/2 ;
         margin-right: 70px;
         border-radius: 10px;
         background-color: $gray-200;
