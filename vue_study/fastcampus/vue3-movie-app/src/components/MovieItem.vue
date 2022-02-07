@@ -30,7 +30,7 @@
 .movie {
   $width: 168px;
   width: $width;
-  height: $width * (3/2);
+  height: $width * (calc(3/2));
   margin: 10px;
   border-radius: 4px;
   background-color: $gray-400;
