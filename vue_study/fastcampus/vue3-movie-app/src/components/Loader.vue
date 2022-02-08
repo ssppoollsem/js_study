@@ -20,7 +20,7 @@ export default {
             type: Number,
             default: 2
         },
-        absolte: {
+        absolute: {
             type: Boolean,
             default: false
         },

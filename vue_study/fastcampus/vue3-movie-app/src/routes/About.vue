@@ -1,15 +1,95 @@
 <template>
-    <div>
-        About
+  <div class="about">
+    <div class="photo">
+      <img
+        :src="image"
+        :alt="name" />
+      <Loader
+        v-if="imageLoading"
+        absolute />
     </div>
+    <div class="name">
+      {{ name }}
+    </div>
+    <div>{{ email }}</div>
+    <div>{{ github }}</div>
+    <div>{{ phone }}</div>
+  </div>
 </template>
 
 <script>
-    export default {
-        
-    }
+import Loader from '~/components/Loader'
+import { mapState } from 'vuex'
+
+export default {
+    data() {
+        return {
+            imageLoading: true
+        }
+    },
+    components: {
+        Loader,
+    },
+    computed: {
+        ...mapState('about', [
+            'image',
+            'name',
+            'email',
+            'github',
+            'phone'
+        ]),
+        // image() {
+        //     return this.$store.state.about.image 
+        // },
+        // name() {
+        //     return this.$store.state.about.name
+        // },
+        // email() {
+        //     return this.$store.state.about.email
+        // },
+        // github() {
+        //     return this.$store.state.about.github
+        // },
+        // phone() {
+        //     return this.$store.state.about.phone
+        // }
+    },
+    mounted () {
+        this.init();
+    },
+    methods: {
+        async init() {
+            await this.$loadImage(this.image)
+            this.imageLoading = false
+        }
+    },
+}
 </script>
 
 <style lang="scss" scoped>
+;
+.about {
+    text-align: center;
+    .photo {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        margin: 40px auto 20px;
+        padding: 30px;
+        border: 10px solid $gray-300;
+        border-radius: 50%;
+        box-sizing: border-box;
+        background-color: $gray-200;
 
+        img {
+            width: 100%;
+        }
+
+    }
+    .name {
+        font-size: 40px;
+        font-family: 'Oswald', sans-serif;
+        margin-bottom: 20px;
+    }
+}
 </style>

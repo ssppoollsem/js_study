@@ -13,7 +13,7 @@
         </div>
       </div>
       <Loader
-        :size="2"
+        :size="3"
         :z-index="9"
         fixed />
     </template>
@@ -22,7 +22,12 @@
       class="movie-details">
       <div
         class="poster"
-        :style="{ backgroundImage: `url(${requestDiffSizeImage(theMovie.Poster) })` }"></div>
+        :style="{ backgroundImage: `url(${requestDiffSizeImage(theMovie.Poster) })` }">
+        <Loader
+          v-if="imageLoading"
+          absolute />
+      </div>
+      
       <div class="specs">
         <div class="title">
           {{ theMovie.Title }}
@@ -73,35 +78,64 @@
 
 <script>
 import Loader from '~/components/Loader'
+import { mapState, mapActions } from 'vuex'
 
 export default {
     components: {
         Loader,
     },
+    data() {
+      return {
+        imageLoading: true
+      }
+    },
     computed: {
-        theMovie() {
-            return this.$store.state.movie.theMovie
-        },
-        loading() {
-            return this.$store.state.movie.loading
-        }
+      ...mapState('movie', [
+        'theMovie',
+        'loading'
+      ])
+      // theMovie() {
+      //     return this.$store.state.movie.theMovie
+      // },
+      // loading() {
+      //     return this.$store.state.movie.loading
+      // }
     },
     created () {
         this.$store.dispatch('movie/searchMovieWithId', {
             // movie/tt1234
             id: this.$route.params.id
         });
+        // this.searchMovieWithId({
+        //   id: this.$route.params.id
+        // })
     },
     methods: {
-        requestDiffSizeImage(url, size=700) {
-            return url.replace('SX300', `SX${size}`)
+      // ...mapActions('movie', [
+      //   'searchMovieWithId'
+      // ]),
+      requestDiffSizeImage(url, size=700) {
+        const src = url.replace('SX300', `SX${size}`);
+
+        // 이미지가 없거나 N/A일 경우 로딩모션 예외처리
+        if (!url && url === 'N/A') {
+          this.imageLoading = false
+          return ''
         }
+        
+        // async await 사용못함(로딩이 끝나고 나서 src 반환되면 안되기 때문에)
+        this.$loadImage(src)
+          .then(() => {
+            this.imageLoading = false
+          })
+        return src
+      }
     },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
+;
 
 .container {
     padding-top: 40px;
@@ -155,6 +189,7 @@ export default {
     color: $gray-600;
 
     .poster {
+        position: relative;
         flex-shrink: 0;
         width: 500px;
         height: 500px * calc(3/2) ;
@@ -216,6 +251,37 @@ export default {
             font-family: 'Oswald', sans-serif;
             font-size: 20px;
         }
+    }
+
+    @include media-breakpoint-down(xl) {
+      .poster {
+        width: 300px;
+        height: 300px * calc(3/2);
+        margin-right: 40px;
+      }
+    }
+
+    @include media-breakpoint-down(lg) {
+      display: block;
+      .poster {
+        margin-bottom: 40px;
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      .specs {
+        .title {
+          font-size: 50px;
+        }
+        .ratings {
+          .rating-wrap {
+            display: block;
+            .rating {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
     }
 }
 </style>
