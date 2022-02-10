@@ -25,5 +25,9 @@ export default createRouter({
             path: '/:notFound(.*)',
             component: NotFound
         }
-    ] 
+    ],
+    scrollBehavior() {
+        // always scroll to top
+        return { top: 0 }
+    },
 })
