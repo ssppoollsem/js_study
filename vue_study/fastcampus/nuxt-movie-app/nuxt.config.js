@@ -11,7 +11,19 @@ export default {
       { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      // <meta property="og:type" content="website" />
+      // <meta property="og:site_name" content="Nuxt Movie App" />
+      // <meta property="og:title" content="Nuxt Movie App / Search" />
+      // <meta property="og:description" content="The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are contributed and maintained by our users." />
+      // <meta property="og:image" content="https://heropy.blog/css/images/logo.png" />
+      // <meta property="og:url" content="https://heropy-nuxt-movie-app.herokuapp.com" />
+      { hid: 'og:type', propery: 'og:type', content: 'website' },
+      { hid: 'og:site_name', propery: 'og:site_name', content: 'Nuxt Movie App' },
+      { hid: 'og:title', propery: 'og:title', content: 'Nuxt Movie App / Search' },
+      { hid: 'og:description', propery: 'og:description', content: 'The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are contributed and maintained by our users.' },
+      { hid: 'og:image', propery: 'og:image', content: 'https://heropy.blog/css/images/logo.png' },
+      { hid: 'og:url', propery: 'og:url', content: process.env.CLIENT_URL  },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -40,7 +52,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/dotenv'
   ],
 
   styleResources: {
@@ -62,5 +75,12 @@ export default {
         require('autoprefixer')
       ]
     }
-  }
+  },
+
+  serverMiddleware: [
+    { 
+      path: '/api/movie', 
+      handler: '~/server-middleware/movie.js' 
+    }
+  ]
 }

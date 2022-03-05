@@ -47,6 +47,18 @@ export default {
       await this.$loadImage(this.image)
       this.imageLoading = false
     }
+  },
+  head() {
+    return {
+      meta: [
+        { hid: 'og:type', propery: 'og:type', content: 'website' },
+        { hid: 'og:site_name', propery: 'og:site_name', content: 'Nuxt Movie App' },
+        { hid: 'og:title', propery: 'og:title', content: this.name },
+        { hid: 'og:description', propery: 'og:description', content: this.email },
+        { hid: 'og:image', propery: 'og:image', content: this.image  },
+        { hid: 'og:url', propery: 'og:url', content: `${process.env.CLIENT_URL}${this.$route.fullPath}`  },
+      ]
+    }
   }
 }
 </script>

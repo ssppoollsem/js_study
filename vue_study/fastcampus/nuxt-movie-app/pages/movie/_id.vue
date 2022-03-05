@@ -83,21 +83,25 @@ export default {
   components: {
     Loader
   },
-  data() {
+  async asyncData({ store, params }) {
+    await store.dispatch('movie/searchMovieWithId', {
+      id: params.id
+    })
     return {
+      // data() 있는걸 옮김
       imageLoading: true
     }
   },
+  // data() {
+  //   return {
+  //     imageLoading: true
+  //   }
+  // },
   computed: {
     ...mapState('movie', [
       'loading',
       'theMovie'
     ])
-  },
-  created() {
-    this.$store.dispatch('movie/searchMovieWithId', {
-      id: this.$route.params.id
-    })
   },
   methods: {
     requestDiffSizeImage(url, size = 700) {
@@ -113,6 +117,18 @@ export default {
           this.imageLoading = false
         })
       return src
+    }
+  },
+  head() {
+    return {
+      meta: [
+        { hid: 'og:type', propery: 'og:type', content: 'website' },
+        { hid: 'og:site_name', propery: 'og:site_name', content: 'Nuxt Movie App' },
+        { hid: 'og:title', propery: 'og:title', content: this.theMovie.Title },
+        { hid: 'og:description', propery: 'og:description', content: this.theMovie.Plot },
+        { hid: 'og:image', propery: 'og:image', content: this.theMovie.Poster },
+        { hid: 'og:url', propery: 'og:url', content: `${process.env.CLIENT_URL}${this.$route.fullPath}`  },
+      ]
     }
   }
 }
