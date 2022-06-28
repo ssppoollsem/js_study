@@ -1,18 +1,31 @@
 <template>
-  <form @submit.prevent="submitForm">
-    <div>
-      <label for="username">id: </label>
-      <input id="username" type="text" v-model="username" />
+  <div class="contents">
+    <div class="form-wrapper form-wrapper-sm">
+      <form @submit.prevent="submitForm" class="form">
+        <div>
+          <label for="username">id:</label>
+          <input id="username" type="text" v-model="username" />
+          <p class="validation-text">
+            <span class="warning" v-if="!isUsernameValid && username">
+              Please enter an email address
+            </span>
+          </p>
+        </div>
+        <div>
+          <label for="password">pw:</label>
+          <input id="password" type="text" v-model="password" />
+        </div>
+        <button
+          :disabled="!isUsernameValid || !password"
+          type="submit"
+          class="btn"
+        >
+          로그인
+        </button>
+      </form>
+      <p class="log">{{ logMessage }}</p>
     </div>
-    <div>
-      <label for="password">pw: </label>
-      <input id="password" type="text" v-model="password" />
-    </div>
-    <button type="submit" :disabled="!isUsernameValid || !password">
-      로그인
-    </button>
-    <p>{{ logMessage }}</p>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -22,8 +35,10 @@ import { validateEmail } from '@/utils/validation';
 export default {
   data() {
     return {
+      // form values
       username: '',
       password: '',
+      // log
       logMessage: '',
     };
   },
@@ -35,16 +50,23 @@ export default {
   methods: {
     async submitForm() {
       try {
-        // 필요한 로직 코드
-        const { data } = await loginUser({
+        // 비즈니스 로직
+        const userData = {
           username: this.username,
           password: this.password,
-        });
-
-        this.logMessage = `${data.user.username} 환영합니다!`;
+        };
+        const { data } = await loginUser(userData);
+        console.log(data.user.username);
+        // <router-lin to=""> 와 같은 역할 (https://router.vuejs.org/guide/essentials/navigation.html)
+        this.$store.commit('setUsername', data.user.username);
+        this.$router.push('/main');
+        // this.logMessage = `${data.user.username} 님 환영합니다`;
+        // this.initForm();
       } catch (error) {
-        // 에러처리 핸들링 코드
+        // 에러 핸들링할 코드
+        console.log(error.response.data);
         this.logMessage = error.response.data;
+        // this.initForm();
       } finally {
         this.initForm();
       }
@@ -57,4 +79,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+.btn {
+  color: white;
+}
+</style>

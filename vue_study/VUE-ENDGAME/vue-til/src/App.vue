@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="app">
     <AppHeader></AppHeader>
-    <!-- router 화면 -->
-    <router-view></router-view>
+    <div class="app-contents">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -16,4 +17,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+@import './css/reset.css';
+@import './css/common.css';
+</style>
