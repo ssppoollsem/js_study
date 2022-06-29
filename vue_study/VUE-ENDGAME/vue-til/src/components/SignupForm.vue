@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     async submitForm() {
-<<<<<<< HEAD
       try {
         const { data } = await registerUser({
           username: this.username,
@@ -52,17 +51,6 @@ export default {
       } finally {
         this.initForm();
       }
-=======
-      const userData = {
-        username: this.username,
-        password: this.password,
-        nickname: this.nickname,
-      };
-      const { data } = await registerUser(userData);
-      console.log(data.username);
-      this.logMessage = `${data.username} 님이 가입되었습니다`;
-      this.initForm();
->>>>>>> 2efff1449eab5563b49f747a2cc181e912fd85fb
     },
     initForm() {
       this.username = '';
