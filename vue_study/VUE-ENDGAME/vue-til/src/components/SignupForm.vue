@@ -1,5 +1,5 @@
 <template>
-  <!-- .pvrevent 새로고침 방지? -->
+  <!-- .pvrevent : button의 기본 동작을 막아준다 (return false 나 preventDefault 같은것) -->
   <form @submit.prevent="submitForm">
     <div>
       <label for="username">id : </label>
@@ -44,15 +44,19 @@ export default {
   },
   methods: {
     async submitForm() {
-      const { data } = await registerUser({
-        username: this.username,
-        password: this.password,
-        nickname: this.nickname,
-      });
+      try {
+        const { data } = await registerUser({
+          username: this.username,
+          password: this.password,
+          nickname: this.nickname,
+        });
 
-      this.logMessage = `${data.username}님이 가입되었습니다.`;
-
-      this.initForm();
+        this.logMessage = `${data.username}님이 가입되었습니다.`;
+      } catch (error) {
+        this.logMessage = error.response.data;
+      } finally {
+        this.initForm();
+      }
     },
     initForm() {
       this.username = '';
