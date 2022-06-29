@@ -1,7 +1,6 @@
 <template>
   <div class="contents">
     <div class="form-wrapper form-wrapper-sm">
-      <!-- .pvrevent : button의 기본 동작을 막아준다 (return false 나 preventDefault 같은것) -->
       <form @submit.prevent="submitForm" class="form">
         <div>
           <label for="username">id: </label>
@@ -38,19 +37,15 @@ export default {
   },
   methods: {
     async submitForm() {
-      try {
-        const { data } = await registerUser({
-          username: this.username,
-          password: this.password,
-          nickname: this.nickname,
-        });
-
-        this.logMessage = `${data.username}님이 가입되었습니다.`;
-      } catch (error) {
-        this.logMessage = error.response.data;
-      } finally {
-        this.initForm();
-      }
+      const userData = {
+        username: this.username,
+        password: this.password,
+        nickname: this.nickname,
+      };
+      const { data } = await registerUser(userData);
+      console.log(data.username);
+      this.logMessage = `${data.username} 님이 가입되었습니다`;
+      this.initForm();
     },
     initForm() {
       this.username = '';
