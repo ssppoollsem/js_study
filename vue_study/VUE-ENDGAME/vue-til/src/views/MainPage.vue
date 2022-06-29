@@ -1,6 +1,6 @@
 <template>
   <div>
-    Page is not found
+    <h1>Main</h1>
   </div>
 </template>
 
@@ -8,4 +8,4 @@
 export default {};
 </script>
 
-<style></style>
+<style lang="scss" scoped></style>
