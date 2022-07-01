@@ -20,7 +20,7 @@ function loginUser(userData) {
   return instance.post('login', userData);
 }
 
-// 학습노트 데이터를 조회하는 API
+// 학습 노트 데이터를 조회하는 API
 function fetchPosts() {
   return instance.get('posts');
 }

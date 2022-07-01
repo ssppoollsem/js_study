@@ -6,7 +6,7 @@
       <ul v-else>
         <PostListItem
           v-for="postItem in postItems"
-          :key="postItem.id"
+          :key="postItem._id"
           :postItem="postItem"
         ></PostListItem>
       </ul>
@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import { fetchPosts } from '@/api/index';
 import PostListItem from '@/components/posts/PostListItem.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
+import { fetchPosts } from '@/api/index';
 
 export default {
   components: {
@@ -35,7 +35,6 @@ export default {
       this.isLoading = true;
       const { data } = await fetchPosts();
       this.isLoading = false;
-      // console.log(data.posts);
       this.postItems = data.posts;
     },
   },

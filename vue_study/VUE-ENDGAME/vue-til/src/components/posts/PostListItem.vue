@@ -1,8 +1,14 @@
 <template>
   <li>
-    <div class="post-title">{{ postItem.title }}</div>
-    <div class="post-contents">{{ postItem.contents }}</div>
-    <div class="post-time">{{ postItem.createdAt }}</div>
+    <div class="post-title">
+      {{ postItem.title }}
+    </div>
+    <div class="post-contents">
+      {{ postItem.contents }}
+    </div>
+    <div class="post-time">
+      {{ postItem.createdAt }}
+    </div>
   </li>
 </template>
 
@@ -17,4 +23,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style></style>
