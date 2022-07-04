@@ -22,3 +22,6 @@ const instance = axios.create({
 ### Interceptors
 - 요청을 보내고 특정 응답 받기전에 특정 로직을 실행하는 기능
 - `https://github.com/axios/axios#interceptors`
+
+### ionicons
+`https://ionic.io/ionicons/usage`
