@@ -11,16 +11,16 @@
         ></PostListItem>
       </ul>
     </div>
-    <router-link to="/add" class="create-button"
-      ><i class="ion-md-add"></i
-    ></router-link>
+    <router-link to="/add" class="create-button">
+      <i class="ion-md-add"></i>
+    </router-link>
   </div>
 </template>
 
 <script>
 import PostListItem from '@/components/posts/PostListItem.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
-import { fetchPosts } from '@/api/index';
+import { fetchPosts } from '@/api/posts';
 
 export default {
   components: {

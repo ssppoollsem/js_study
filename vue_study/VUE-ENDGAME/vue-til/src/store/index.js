@@ -6,7 +6,7 @@ import {
   saveAuthToCookie,
   saveUserToCookie,
 } from '@/utils/cookies';
-import { loginUser } from '@/api/index';
+import { loginUser } from '@/api/auth';
 
 Vue.use(Vuex);
 
@@ -39,7 +39,7 @@ export default new Vuex.Store({
       commit('setUsername', data.user.username);
       saveAuthToCookie(data.token);
       saveUserToCookie(data.user.username);
-      return data; // 생략가능
+      return data;
     },
   },
 });
