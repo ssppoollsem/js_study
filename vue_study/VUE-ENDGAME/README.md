@@ -25,3 +25,6 @@ const instance = axios.create({
 
 ### ionicons
 `https://ionic.io/ionicons/usage`
+
+### 라우터 네비게이션 가드
+- `https://router.vuejs.org/guide/advanced/navigation-guards.html`
