@@ -21,12 +21,22 @@ a {
     text-decoration: none;
 }
 
+.global-nav,
+.local-nav {
+
+    position: absolute;
+    left: 0; 
+    right: 0;
+}
+
 .global-nav {
+    top: 0;
     height: 44px;
     padding: 0 1rem;
 }
 
 .local-nav {
+    top: 44px;
     height: 52px;
     border-bottom: 1px solid #ddd;
 }
@@ -57,6 +67,7 @@ a {
 
 .scroll-section {
     padding-top: 50vh;
+    border: 3px solid red;
 }
 
 #scroll-section-0 h1 {
@@ -140,6 +151,27 @@ a {
     color: #fff;
     align-items: center;
     justify-content: center;
+}
+
+.sticky-elem {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#show-scene-0 #scroll-section-0 .sticky-elem {
+    display: block; 
+}
+#show-scene-1 #scroll-section-1 .sticky-elem {
+    display: block; 
+}
+#show-scene-2 #scroll-section-2 .sticky-elem {
+    display: block; 
+}
+#show-scene-3 #scroll-section-3 .sticky-elem {
+    display: block; 
 }
 
 @media (min-width:1024px) {
