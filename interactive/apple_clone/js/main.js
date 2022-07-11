@@ -75,11 +75,11 @@
 
 		if(yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
 			currentScene++;
-			document.body.setAttribute('id',`show-scene-${currentScene}`)
+			document.body.setAttribute('id',`show-scene-${currentScene}`);
 		} 
 		if(yOffset < prevScrollHeight) {
 			currentScene === 0 ? '' : currentScene--; // 브라우저 바운스 효과 방지
-			document.body.setAttribute('id',`show-scene-${currentScene}`)
+			document.body.setAttribute('id',`show-scene-${currentScene}`);
 		}
 	}
 	
