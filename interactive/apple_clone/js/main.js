@@ -12,9 +12,15 @@
 			scrollHeight: 0,
 			type: 'sticky', // 스크롤에 따른 애니메이션 타입
 			objs: {
-				container: document.querySelector('#scroll-section-0')
+				container: document.querySelector('#scroll-section-0'),
+				messageA: document.querySelector('#scroll-section-0 .main-message.a'),
+				messageB: document.querySelector('#scroll-section-0 .main-message.b'),
+				messageC: document.querySelector('#scroll-section-0 .main-message.c'),
+				messageD: document.querySelector('#scroll-section-0 .main-message.d'),
+			},
+			values: {
+				messageA_opacity: [0, 1], // opacity 시작값, 끝값
 			}
-
 		},
 		{
 			// 1 섹션
@@ -80,6 +86,34 @@
 		if(yOffset < prevScrollHeight) {
 			currentScene === 0 ? '' : currentScene--; // 브라우저 바운스 효과 방지
 			document.body.setAttribute('id',`show-scene-${currentScene}`);
+		}
+
+		playAnimation();
+	}
+
+	// 애니메이션 값 변화 계산
+	function calcValues(values, currentYOffset) { //currentYOffset = 전체가 아닌 각 섹션마다의 yoffset
+
+	}
+
+	// 스크롤 될때 실행되는 애니메이션
+	function playAnimation() {
+		const objs = sceneInfo[currentScene].objs;
+		const values = sceneInfo[currentScene].values;
+		const currentYOffset = yOffset - prevScrollHeight;
+
+		switch(currentScene) {
+			case 0:
+				let messageA_opacity_0 = values.messageA_opacity[0] // opacity 시작값
+				let messageA_opacity_1 = values.messageA_opacity[1] // opacity 끝값
+				calcValues(messageA_opacity_0, currentYOffset)
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
 		}
 	}
 	
