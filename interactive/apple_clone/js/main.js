@@ -3,6 +3,7 @@
 	let yOffset = 0; // window.pageYOffset 대신 쓸 변수
 	let prevScrollHeight = 0; // 현재 스크롤 위치(yOffset) 보다 이전의 위치한 스크롤 섹션들의 스크롤 높이값의 합
 	let currentScene = 0; // 현재 활성화 된 section
+	let enterNewScene = false; // 새로운 섹션이 시작되는 순간 true (섹션이 넘어가는 순간 messageA_opacity 값이 -되는 현상을 방지하기위해 사용함)
 
 	// 각 섹션에 대한 정보
 	const sceneInfo = [
@@ -74,26 +75,34 @@
 
 	
 	function scrollLoop() {
+		enterNewScene = false;
 		prevScrollHeight = 0; // 초기화
 		for(let i = 0; i < currentScene; i++) {
 			prevScrollHeight += sceneInfo[i].scrollHeight;
 		}
 
 		if(yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
+			enterNewScene = true;
 			currentScene++;
 			document.body.setAttribute('id',`show-scene-${currentScene}`);
 		} 
 		if(yOffset < prevScrollHeight) {
+			enterNewScene = true;
 			currentScene === 0 ? '' : currentScene--; // 브라우저 바운스 효과 방지
 			document.body.setAttribute('id',`show-scene-${currentScene}`);
 		}
 
+		if(enterNewScene) return;
 		playAnimation();
 	}
 
 	// 애니메이션 값 변화 계산
 	function calcValues(values, currentYOffset) { //currentYOffset = 전체가 아닌 각 섹션마다의 yoffset
+		let rv;
+		let scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight; // 현재 스크롤섹션에서 스크롤된 범위를 비율로 구하기
+		rv = scrollRatio * (values[1] - values[0]) + values[0];
 
+		return rv;
 	}
 
 	// 스크롤 될때 실행되는 애니메이션
@@ -104,9 +113,8 @@
 
 		switch(currentScene) {
 			case 0:
-				let messageA_opacity_0 = values.messageA_opacity[0] // opacity 시작값
-				let messageA_opacity_1 = values.messageA_opacity[1] // opacity 끝값
-				calcValues(messageA_opacity_0, currentYOffset)
+				let messageA_opacity_in = calcValues(values.messageA_opacity, currentYOffset);
+				objs.messageA.style.opacity = messageA_opacity_in;
 				break;
 			case 1:
 				break;
