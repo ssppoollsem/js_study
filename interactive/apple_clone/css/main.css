@@ -69,7 +69,6 @@ a {
 
 .scroll-section {
     padding-top: 50vh;
-    border: 3px solid red;
 }
 
 #scroll-section-0 h1 {
@@ -169,7 +168,7 @@ a {
 .sticky-elem {
     display: none;
     position: fixed;
-    top: 50%;
+    top: 42%;
     left: 0;
     right: 0;
 }
