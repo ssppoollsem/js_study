@@ -201,7 +201,7 @@ a {
 .image-blend-canvas.sticky {
     position: fixed;
     top: 0;
-    /* margin: 0 !important; */
+    margin: 0 !important;
 }
 
 #scroll-section-3 {

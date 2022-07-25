@@ -405,7 +405,7 @@
 					// step 2
 					console.log('캔버스 닿은 후');
 					objs.canvas.classList.add('sticky');
-					objs.canvas.style.top = `${(objs.canvas.height - objs.canvas.height * canvasScaleRatio) / 2}px`
+					objs.canvas.style.top = `${-(objs.canvas.height - objs.canvas.height * canvasScaleRatio) / 2}px`
 				}
 				break;
 		}
