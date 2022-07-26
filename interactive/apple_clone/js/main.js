@@ -418,7 +418,7 @@
 						0, objs.canvas.height - blendHeight, objs.canvas.width, blendHeight
 						);
 					objs.canvas.classList.add('sticky');
-					objs.canvas.style.top = `${(objs.canvas.height - objs.canvas.height * canvasScaleRatio) / 2}px`
+					objs.canvas.style.top = `${-(objs.canvas.height - objs.canvas.height * canvasScaleRatio) / 2}px`
 				}
 				break;
 		}
