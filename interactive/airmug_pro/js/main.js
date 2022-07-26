@@ -114,6 +114,7 @@
 				rect1X: [0, 0, {start:0, end: 0}],
 				rect2X: [0, 0, {start:0, end: 0}],
 				blendHeight: [0, 0, {start:0, end: 0}],
+				canvas_scale: [0, 0, {start:0, end: 0}],
 				rectStartY: 0,
 			} 
 		},
@@ -410,7 +411,7 @@
 					values.blendHeight[1] = objs.canvas.height;
 					values.blendHeight[2].start = values.rect1X[2].end;
 					values.blendHeight[2].end = values.blendHeight[2].start + 0.2;
-					const blendHeight = calcValues(values.blendHeight, currentYOffset)
+					const blendHeight = calcValues(values.blendHeight, currentYOffset);
 
 					objs.context.drawImage(
 						objs.images[1], 
@@ -419,6 +420,15 @@
 						);
 					objs.canvas.classList.add('sticky');
 					objs.canvas.style.top = `${-(objs.canvas.height - objs.canvas.height * canvasScaleRatio) / 2}px`
+
+					if(scrollRatio > values.blendHeight[2].end) {
+						values.canvas_scale[0] = canvasScaleRatio;
+						values.canvas_scale[1] = canvasScaleRatio * 0.7;
+						console.log(values.canvas_scale[1]);
+						values.canvas_scale[2].start = values.blendHeight[2].end;
+						values.canvas_scale[2].end = values.canvas_scale[2].start + 0.2;
+						objs.canvas.style.transform = `scale(${calcValues(values.canvas_scale, currentYOffset)})`					
+					}
 				}
 				break;
 		}
