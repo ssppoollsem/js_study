@@ -103,6 +103,7 @@
 				container: document.querySelector('#scroll-section-3'),
             	canvasCaption: document.querySelector('.canvas-caption'),
 				canvas: document.querySelector('.image-blend-canvas'),
+				end: document.querySelector('.image-blend-canvas.end'),
 				context: document.querySelector('.image-blend-canvas').getContext('2d'),
 				imagesPath: [
 					'./images/blend-image-1.jpg',
@@ -115,6 +116,8 @@
 				rect2X: [0, 0, {start:0, end: 0}],
 				blendHeight: [0, 0, {start:0, end: 0}],
 				canvas_scale: [0, 0, {start:0, end: 0}],
+				canvasCaption_opacity: [0, 1, {start:0, end: 0}],
+				canvasCaption_translateY: [20, 0, {start:0, end: 0}],
 				rectStartY: 0,
 			} 
 		},
@@ -144,6 +147,14 @@
 	}
 
 	setCanvasImages()
+
+	function checkMenu() {
+		if(yOffset > 44) {
+			document.body.classList.add('local-nav-sticky');
+		}else {
+			document.body.classList.remove('local-nav-sticky');
+		}
+	}
 
 	// 각 스크롤 섹션의 높이 세팅
 	function setLayout() {
@@ -423,11 +434,23 @@
 
 					if(scrollRatio > values.blendHeight[2].end) {
 						values.canvas_scale[0] = canvasScaleRatio;
-						values.canvas_scale[1] = canvasScaleRatio * 0.7;
-						console.log(values.canvas_scale[1]);
+						values.canvas_scale[1] = document.body.offsetWidth / (1.5 * objs.canvas.width);
+						// console.log(values.canvas_scale[1]);
 						values.canvas_scale[2].start = values.blendHeight[2].end;
 						values.canvas_scale[2].end = values.canvas_scale[2].start + 0.2;
 						objs.canvas.style.transform = `scale(${calcValues(values.canvas_scale, currentYOffset)})`					
+						objs.canvas.style.margin = '12vw 0px';
+					}
+
+					if(scrollRatio > values.canvas_scale[2].end && values.canvas_scale[2].end > 0) {
+						objs.canvas.classList.remove('sticky');
+						objs.canvas.style.marginTop = `${scrollHeight * 0.4}px`;
+
+						values.canvasCaption_opacity[2].start = values.canvasCaption_translateY[2].start = values.canvas_scale[2].end;
+						values.canvasCaption_opacity[2].end = values.canvasCaption_translateY[2].end = values.canvasCaption_opacity[2].start + 0.1;
+						
+						objs.canvasCaption.style.opacity = calcValues(values.canvasCaption_opacity, currentYOffset);
+						objs.canvasCaption.style.transform = `translate3d(0, ${calcValues(values.canvasCaption_translateY, currentYOffset)}% ,0)`
 					}
 				}
 				break;
@@ -444,6 +467,7 @@
 	window.addEventListener('scroll', () => {
 		yOffset = window.pageYOffset; // 스크롤 위치값
 		scrollLoop();
+		checkMenu();
 	})
 
 })();
