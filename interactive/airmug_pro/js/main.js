@@ -491,7 +491,11 @@
 
 	window.addEventListener('load', () => {
 		setLayout();
-		sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
+		sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0); 
+		document.body.classList.remove('before-load');
+		document.querySelector('.loading').addEventListener('transitionend', (e) => {
+			document.body.removeChild(e.currentTarget)
+		})
 	});
 	
 	window.addEventListener('scroll', () => {
