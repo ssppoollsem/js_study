@@ -193,11 +193,22 @@
 		for(let i = 0; i < currentScene; i++) {
 			prevScrollHeight += sceneInfo[i].scrollHeight;
 		}
+		if(delayedYOffset < prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
+			document.body.classList.remove('scroll-effect-end');
+		}
+
 		if(delayedYOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
 			enterNewScene = true;
-			currentScene++;
+
+			if(currentScene === sceneInfo.length - 1) {
+				document.body.classList.add('scroll-effect-end');
+			}
+
+			if(currentScene < sceneInfo.length - 1) {
+				currentScene++;
+			} 
 			document.body.setAttribute('id',`show-scene-${currentScene}`);
-		} 
+		}
 		if(delayedYOffset < prevScrollHeight) {
 			enterNewScene = true;
 			currentScene === 0 ? '' : currentScene--; // 브라우저 바운스 효과 방지
@@ -479,35 +490,54 @@
 		}
 	}
 	
-	
-	window.addEventListener('resize', () => {
-		if (window.innerWidth > 600) {
-			setLayout();
-		}
-		sceneInfo[3].values.rectStartY = 0;
-	}); // 화면 리사이즈 발생시 setLayout 재실행
-	
-	window.addEventListener('orientationchange', setLayout);
-
 	window.addEventListener('load', () => {
+
+		document.body.classList.remove('before-load');
 		setLayout();
 		sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0); 
-		document.body.classList.remove('before-load');
+
+		let tempYOffset = yOffset;
+		let tempScrollCount = 0;
+
+		if(tempYOffset > 0) {
+			let siId = setInterval(() => {
+				window.scrollTo(0,tempYOffset);
+				tempYOffset += 5;
+				tempScrollCount++;
+	
+				if(tempScrollCount > 20) {
+					clearInterval(siId);
+				}
+			}, 20);
+		}
+
 		document.querySelector('.loading').addEventListener('transitionend', (e) => {
 			document.body.removeChild(e.currentTarget)
 		})
+
+		window.addEventListener('resize', () => {
+			if (window.innerWidth > 900) {
+				window.location.reload();
+			}
+		}); // 화면 리사이즈 발생시 setLayout 재실행
+		
+		window.addEventListener('orientationchange', () => {
+			scrollTo(0, 0);
+			window.location.reload();
+		});
+
+		window.addEventListener('scroll', () => {
+			yOffset = window.pageYOffset; // 스크롤 위치값
+			scrollLoop();
+			checkMenu();
+	
+			if (!rafState) {
+				rafId = requestAnimationFrame(loop);
+				rafState = true;
+			}
+		})
 	});
 	
-	window.addEventListener('scroll', () => {
-		yOffset = window.pageYOffset; // 스크롤 위치값
-		scrollLoop();
-		checkMenu();
-
-		if (!rafState) {
-			rafId = requestAnimationFrame(loop);
-			rafState = true;
-		}
-	})
 	setCanvasImages();
 
 })();
