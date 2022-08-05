@@ -31,6 +31,15 @@
 1. 높은 수준의 코드 탐색과 디버깅
 
 - 코드에 목적을 명시하고 목적에 맞지 않는 타입의 변수나 함수들에서 에러를 발생시켜 버그를 사전에 제거한다.
+
+```js
+// math.ts
+function sum(a: number, b: number) {
+  return a + b;
+}
+sum("10", "20"); // Error: '10'은 number에 할당될 수 없습니다.
+```
+
 - 코드 자동완성이나 실행 전 피드백을 제공하여 작업과 동시에 디버깅이 가능해 생산성을 높일 수 있다.
 
 2. 자바스크립트 호환
@@ -61,4 +70,7 @@
 
 ---
 
-출처 : https://www.samsungsds.com/kr/insights/typescript.html
+## 출처
+
+https://www.samsungsds.com/kr/insights/typescript.html
+https://joshua1988.github.io/ts/why-ts.html#%EC%99%9C-%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A5%BC-%EC%8D%A8%EC%95%BC%ED%95%A0%EA%B9%8C%EC%9A%94
