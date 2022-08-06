@@ -40,7 +40,9 @@ function sum(a: number, b: number) {
 sum("10", "20"); // Error: '10'은 number에 할당될 수 없습니다.
 ```
 
-- 코드 자동완성이나 실행 전 피드백을 제공하여 작업과 동시에 디버깅이 가능해 생산성을 높일 수 있다.
+- 코드 자동완성([IntelliSense](https://code.visualstudio.com/docs/editor/intellisense))이나 실행 전 피드백을 제공하여 작업과 동시에 디버깅이 가능해 생산성을 높일 수 있다.
+
+###
 
 2. 자바스크립트 호환
 
