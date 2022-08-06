@@ -74,5 +74,5 @@ sum("10", "20"); // Error: '10'은 number에 할당될 수 없습니다.
 
 ## 출처
 
-https://www.samsungsds.com/kr/insights/typescript.html
-https://joshua1988.github.io/ts/why-ts.html#%EC%99%9C-%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A5%BC-%EC%8D%A8%EC%95%BC%ED%95%A0%EA%B9%8C%EC%9A%94
+- https://www.samsungsds.com/kr/insights/typescript.html
+- https://joshua1988.github.io/ts/why-ts.html#%EC%99%9C-%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A5%BC-%EC%8D%A8%EC%95%BC%ED%95%A0%EA%B9%8C%EC%9A%94
