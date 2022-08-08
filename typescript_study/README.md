@@ -87,6 +87,13 @@ tsc 파일이름(확장자 제외)
 
 ---
 
+## 기타 타입스크립트 사이트
+
+1. [타입스크립트 컴파일 옵션 설정](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+2. [타입스크립트 플레이그라운드](https://www.typescriptlang.org/play)
+
+---
+
 ## 출처
 
 - https://www.samsungsds.com/kr/insights/typescript.html
