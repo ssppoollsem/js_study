@@ -34,4 +34,4 @@ function askQuestion(answer: Answer) {
 askQuestion('y');
 askQuestion('예스');
 askQuestion('Yes');
-askQuestion(Answer.Yes);
+askQuestion(Answer.Yes`);

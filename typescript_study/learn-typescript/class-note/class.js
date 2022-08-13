@@ -1,4 +1,5 @@
 function Person(name, age) {
+  // 생성자 함수 (하단 클래스와 동일기능)
   this.name = name;
   this.age = age;
 }
