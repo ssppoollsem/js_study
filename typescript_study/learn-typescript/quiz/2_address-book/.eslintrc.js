@@ -5,10 +5,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: [
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
+  extends: ['plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended'],
   plugins: ['prettier', '@typescript-eslint'],
   rules: {
     'prettier/prettier': [
@@ -23,8 +20,8 @@ module.exports = {
         arrowParens: 'avoid',
       },
     ],
-    '@typescript-eslint/no-explicit-any': 'off',
-    "@typescript-eslint/explicit-function-return-type": 'off',
+    // '@typescript-eslint/no-explicit-any': 'off',
+    // "@typescript-eslint/explicit-function-return-type": 'off',
     'prefer-const': 'off',
   },
   parserOptions: {

@@ -12,7 +12,7 @@ interface Contact {
 
 // api
 // TODO: 아래 함수의 반환 타입을 지정해보세요.
-function fetchContacts() {
+function fetchContacts(): object {
   // TODO: 아래 변수의 타입을 지정해보세요.
   const contacts = [
     {
@@ -49,7 +49,7 @@ function fetchContacts() {
       },
     },
   ];
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => resolve(contacts), 2000);
   });
 }
@@ -63,25 +63,23 @@ class AddressBook {
     this.fetchData();
   }
 
-  fetchData() {
-    fetchContacts().then(response => {
+  fetchData(): void {
+    fetchContacts().then((response) => {
       this.contacts = response;
     });
   }
 
   /* TODO: 아래 함수들의 파라미터 타입과 반환 타입을 지정해보세요 */
-  findContactByName(name) {
-    return this.contacts.filter(contact => contact.name === name);
+  findContactByName(name: string): object {
+    return this.contacts.filter((contact) => contact.name === name);
   }
 
-  findContactByAddress(address) {
-    return this.contacts.filter(contact => contact.address === address);
+  findContactByAddress(address: string) {
+    return this.contacts.filter((contact) => contact.address === address);
   }
 
-  findContactByPhone(phoneNumber, phoneType: string) {
-    return this.contacts.filter(
-      contact => contact.phones[phoneType].num === phoneNumber
-    );
+  findContactByPhone(phoneNumber: PhoneNumberDictionary, phoneType: string) {
+    return this.contacts.filter((contact) => contact.phones[phoneType].num === phoneNumber);
   }
 
   addContact(contact) {
@@ -89,11 +87,11 @@ class AddressBook {
   }
 
   displayListByName() {
-    return this.contacts.map(contact => contact.name);
+    return this.contacts.map((contact) => contact.name);
   }
 
   displayListByAddress() {
-    return this.contacts.map(contact => contact.address);
+    return this.contacts.map((contact) => contact.address);
   }
   /* ------------------------------------------------ */
 }
