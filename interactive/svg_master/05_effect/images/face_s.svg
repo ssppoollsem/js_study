@@ -2,12 +2,12 @@
   <defs>
     <style>
       @keyframes eye-ani {
-        from { transform: scaleY(1); }
-        to { transform: scaleY(0.2); }
+        from {transform: scaleY(1)}
+        to {transform: scaleY(0.2)}
       }
       .right-eye {
-        transform-origin: 19px 42px;
         animation: eye-ani 0.5s alternate infinite;
+        transform-origin: 19px 42px;
       }
     </style>
   </defs>
