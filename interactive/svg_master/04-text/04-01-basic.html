@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .svg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #ddd;
+      }
+      text {
+        font-weight: 700;
+        font-size: 1.5rem;
+        /* color */
+        fill: red;
+      }
+      path {
+        fill: none;
+        stroke: red;
+      }
+      .special {
+        fill: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <svg class="svg">
+      <defs>
+        <path id="text-curve" d="M 50 400 C 50 400, 300 500, 400 400 C 400 400, 600 170, 700 300"></path>
+      </defs>
+      <text x="20" y="50">
+        <textPath href="#text-curve">
+          Lorem
+          <tspan class="special">strong</tspan>
+          , dolor sit amet consectetur adipisicing elit. Excepturi eos corrupti ducimus est mollitia, inventore eveniet? Illum consectetur laudantium ducimus assumenda quia a sunt fugit harum, velit
+          quas labore hic obcaecati ut recusandae doloremque, fuga vel perferendis? A perferendis, corrupti perspiciatis ipsum deleniti animi dolorem velit aliquam odit mollitia placeat impedit quo
+          suscipit facilis eaque natus debitis obcaecati rerum labore nemo. Tempora iure dolore accusantium animi minima et maiores natus repellendus aut corrupti corporis voluptatibus sapiente, omnis
+          expedita aperiam commodi deleniti! Recusandae quos itaque minus ut illum dignissimos vel dolores ullam enim quod officiis pariatur facere architecto consequatur, assumenda praesentium magni
+          nulla unde consectetur excepturi. Aliquam hic ut assumenda. Sunt quasi impedit, sint repellat voluptas delectus, non unde ad culpa accusamus ipsum eum assumenda exercitationem, debitis
+          perferendis consequuntur vel! Vitae, debitis similique! Architecto maiores amet adipisci, officia nihil tenetur quaerat libero aliquam dicta. Sed aut repellat repellendus dolore velit maxime
+          sequi quis tempore, nam modi autem adipisci nulla, vero nisi quae ratione sunt inventore ea eligendi maiores illo laudantium, hic tempora. Placeat inventore consequuntur ut maxime ullam
+          deleniti, expedita natus nisi deserunt odio praesentium ea, voluptate autem sapiente numquam nemo consectetur nulla? Possimus quos quae cupiditate similique, magnam necessitatibus.
+        </textPath>
+      </text>
+    </svg>
+  </body>
+</html>

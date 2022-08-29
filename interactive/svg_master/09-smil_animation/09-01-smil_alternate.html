@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <svg class="svg" viewBox="0 0 1000 1000">
+      <rect class="rect" x="10" y="10" width="20%" height="20%">
+        <!-- 무한반복 :  repeatCount = "indefinite" -->
+        <animate class="ani" attributeName="x" dur="2s" values="0; 700; 0" keyTimes="0; 0.5; 1" repeatCount="indefinite"></animate>
+      </rect>
+    </svg>
+  </body>
+</html>
