@@ -10,7 +10,7 @@
 
 ## 기타 사이트
 
-1. [GASP트윈맥스] (https://greensock.com/tweenmax/)
+1. [GASP 트윈맥스](https://greensock.com/tweenmax/)
 2. [모바일 기울기](https://web.dev/native-hardware-device-orientation/)
 
 ---
