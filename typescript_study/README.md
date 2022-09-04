@@ -37,7 +37,7 @@
 function sum(a: number, b: number) {
   return a + b;
 }
-sum("10", "20"); // Error: '10'은 number에 할당될 수 없습니다.
+sum('10', '20'); // Error: '10'은 number에 할당될 수 없습니다.
 ```
 
 - 코드 자동완성([IntelliSense](https://code.visualstudio.com/docs/editor/intellisense))이나 실행 전 피드백을 제공하여 작업과 동시에 디버깅이 가능해 생산성을 높일 수 있다.
@@ -91,6 +91,8 @@ tsc 파일이름(확장자 제외)
 
 1. [타입스크립트 컴파일 옵션 설정](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 2. [타입스크립트 플레이그라운드](https://www.typescriptlang.org/play)
+3. [Mapped Type Proposal 깃헙 PR](https://github.com/Microsoft/TypeScript/pull/12114)
+4. [타입스크립트 핸드북](https://joshua1988.github.io/ts/)
 
 ---
 
