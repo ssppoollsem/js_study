@@ -3,8 +3,8 @@ html,
 body {
   width: 100%;
   height: 100%;
-  line-height: 1;
   font-family: 'Exo 2', sans-serif;
+  line-height: 1;
 }
 
 body,
@@ -16,11 +16,11 @@ span,
 div {
   margin: 0;
   padding: 0;
-  border: 0;
-  font-size: 100%;
-  font-weight: 500;
   font: inherit;
+  font-weight: 500;
+  font-size: 100%;
   font-family: 'Exo 2', sans-serif;
+  border: 0;
 }
 ol {
   list-style-type: none;
@@ -49,8 +49,8 @@ ol {
 
 /* common stylesheets */
 body {
-  background: #4d4646;
   color: white;
+  background: #4d4646;
 }
 main {
   padding: 0 1rem;
@@ -58,9 +58,9 @@ main {
 
 /* element specific */
 header > h1 {
-  font-size: 2rem;
-  font-weight: 600;
   padding: 1.2rem 0;
+  font-weight: 600;
+  font-size: 2rem;
 }
 
 /* left panel */
@@ -68,15 +68,15 @@ header > h1 {
   width: 33%;
 }
 .total-board {
-  background-color: #5b5656;
   width: 100%;
   height: 100px;
   text-align: center;
+  background-color: #5b5656;
 }
 .total-board > p {
-  font-size: 1.75rem;
-  font-weight: 600;
   padding: 1.2rem 0 0.5rem 0;
+  font-weight: 600;
+  font-size: 1.75rem;
 }
 .confirmed-total {
   color: #f54741;
@@ -84,16 +84,16 @@ header > h1 {
   font-size: 2.5rem;
 }
 .country-ranks {
-  margin-top: 1rem;
-  background-color: #5b5656;
   width: 100%;
   height: 600px;
+  margin-top: 1rem;
+  background-color: #5b5656;
   /* position: relative; */
 }
 .country-ranks > p {
-  text-align: center;
-  font-size: 1.25rem;
   padding: 1.25rem 0 0.75rem 0;
+  font-size: 1.25rem;
+  text-align: center;
 }
 .rank-list {
   height: 540px;
@@ -101,53 +101,53 @@ header > h1 {
   overflow-y: auto;
 }
 .last-updated-time {
-  margin-top: 1rem;
-  background-color: #5b5656;
   width: 100%;
   height: 80px;
-  font-size: 1.25rem;
+  margin-top: 1rem;
   font-weight: 600;
+  font-size: 1.25rem;
+  background-color: #5b5656;
 }
 .list-item {
   height: 40px;
-  border-bottom: solid 1px rgb(155, 155, 155);
   color: #f5eaea;
+  border-bottom: solid 1px rgb(155, 155, 155);
   cursor: pointer;
 }
 .list-item:hover {
-  background-color: #e1f4f3;
   color: #333333;
+  background-color: #e1f4f3;
 }
 .cases {
-  color: #f54741;
-  font-size: 1.125rem;
-  font-weight: 750;
-  padding: 0 0.7rem;
   width: 98px;
+  padding: 0 0.7rem;
+  color: #f54741;
+  font-weight: 750;
+  font-size: 1.125rem;
 }
 .country {
-  font-size: 1.125rem;
   font-weight: 600;
+  font-size: 1.125rem;
 }
 /* right panel */
 .right-panel {
-  margin-left: 1rem;
   width: 66%;
+  margin-left: 1rem;
 }
 .deaths-container {
-  background-color: #5b5656;
   width: 100%;
   height: 440px;
   text-align: center;
+  background-color: #5b5656;
 }
 .summary-title {
   padding: 0.5rem 0;
   font-size: 1.25rem;
 }
 .total {
-  font-size: 3rem;
-  font-weight: 600;
   padding-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 3rem;
 }
 .list-wrapper {
   height: 340px;
@@ -159,27 +159,27 @@ header > h1 {
 }
 .list-item-b {
   height: 35px;
-  border-bottom: solid 1px rgb(155, 155, 155);
   color: #f5eaea;
+  border-bottom: solid 1px rgb(155, 155, 155);
 }
 .list-item-b > .deaths {
-  padding: 0 0.4rem;
-  font-size: 1.125rem;
-  font-weight: 550;
   width: 84px;
+  padding: 0 0.4rem;
   color: white;
+  font-weight: 550;
+  font-size: 1.125rem;
 }
 .list-item-b > .recovered {
-  padding: 0 0.4rem;
-  font-size: 1.125rem;
-  font-weight: 550;
   width: 84px;
+  padding: 0 0.4rem;
+  font-weight: 550;
+  font-size: 1.125rem;
 }
 .recovered-container {
-  margin-left: 1rem;
-  background-color: #5b5656;
   width: 100%;
+  margin-left: 1rem;
   text-align: center;
+  background-color: #5b5656;
 }
 .recovered {
   color: #7fcd91;
@@ -192,8 +192,8 @@ header > h1 {
 
 /* chart */
 .chart-container {
-  margin-top: 1rem;
   height: 356px;
+  margin-top: 1rem;
 }
 
 /* spinner */
@@ -201,8 +201,8 @@ header > h1 {
   height: 100%;
 }
 .ripple-spinner {
-  display: inline-block;
   position: relative;
+  display: inline-block;
   width: 80px;
   height: 80px;
 }
