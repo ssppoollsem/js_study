@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "ES5",
+    "outDir": "./built",
+    "moduleResolution": "Node",
+    "lib": ["es2015", "DOM", "DOM.Iterable"]
+  },
+  "include": ["./src/**/*"] // 해당폴더에 있는 파일들만 컴파일하겠다.
+}
