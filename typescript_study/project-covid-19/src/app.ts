@@ -1,25 +1,26 @@
 // @ts-check
 
 // utils
-function $(selector: any) {
+function $(selector: string) {
   return document.querySelector(selector);
 }
-function getUnixTimestamp(date: any) {
+function getUnixTimestamp(date: Date) {
   return new Date(date).getTime();
 }
 
 // DOM
-const confirmedTotal = $('.confirmed-total');
-const deathsTotal = $('.deaths');
-const recoveredTotal = $('.recovered');
-const lastUpdatedTime = $('.last-updated-time');
+var a: Element | HTMLElement | HTMLParagraphElement;
+const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
+const deathsTotal = $('.deaths') as HTMLParagraphElement;
+const recoveredTotal = $('.recovered') as HTMLParagraphElement;
+const lastUpdatedTime = $('.last-updated-time') as HTMLParagraphElement;
 const rankList = $('.rank-list');
 const deathsList = $('.deaths-list');
 const recoveredList = $('.recovered-list');
 const deathSpinner = createSpinnerElement('deaths-spinner');
 const recoveredSpinner = createSpinnerElement('recovered-spinner');
 
-function createSpinnerElement(id: any) {
+function createSpinnerElement(id: string) {
   const wrapperDiv = document.createElement('div');
   wrapperDiv.setAttribute('id', id);
   wrapperDiv.setAttribute('class', 'spinner-wrapper flex justify-center align-center');
@@ -44,8 +45,14 @@ fetchCovidSummary().then((res: any) => {
   console.log(res.Country);
 });
 
-function fetchCountryInfo(countryCode: any, status: any) {
-  // params: confirmed, recovered, deaths
+enum CovidStatus {
+  Confirmed = 'confirmed',
+  Recovered = 'recovered',
+  Deaths = 'deaths',
+}
+
+function fetchCountryInfo(countryCode: string, status: CovidStatus) {
+  // status params: confirmed, recovered, deaths
   const url = `https://api.covid19api.com/country/${countryCode}/status/${status}`;
   return axios.get(url);
 }
@@ -76,9 +83,9 @@ async function handleListClick(event: any) {
   clearRecoveredList();
   startLoadingAnimation();
   isDeathLoading = true;
-  const { data: deathResponse } = await fetchCountryInfo(selectedId, 'deaths');
-  const { data: recoveredResponse } = await fetchCountryInfo(selectedId, 'recovered');
-  const { data: confirmedResponse } = await fetchCountryInfo(selectedId, 'confirmed');
+  const { data: deathResponse } = await fetchCountryInfo(selectedId, CovidStatus.Deaths);
+  const { data: recoveredResponse } = await fetchCountryInfo(selectedId, CovidStatus.Recovered);
+  const { data: confirmedResponse } = await fetchCountryInfo(selectedId, CovidStatus.Confirmed);
   endLoadingAnimation();
   setDeathsList(deathResponse);
   setTotalDeathsByCountry(deathResponse);
