@@ -93,6 +93,7 @@ tsc 파일이름(확장자 제외)
 2. [타입스크립트 플레이그라운드](https://www.typescriptlang.org/play)
 3. [Mapped Type Proposal 깃헙 PR](https://github.com/Microsoft/TypeScript/pull/12114)
 4. [타입스크립트 핸드북](https://joshua1988.github.io/ts/)
+5. [타입 정의가 제공되는 오픈소스 검색 사이트](https://www.typescriptlang.org/dt/search?search=)
 
 ---
 
