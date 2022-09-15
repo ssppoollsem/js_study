@@ -6,7 +6,7 @@
 import axios, { Axios, AxiosResponse } from 'axios';
 import { Chart } from 'chart.js';
 // 타입 모듈
-import { CovidSummaryResponse } from './covid/index';
+import { CovidSummaryResponse, CovidStatusResponse } from './covid/index';
 
 // utils
 function $(selector: string) {
@@ -57,7 +57,7 @@ enum CovidStatus {
 }
 
 // 실습1 deathResponse, recoveredResponse, confirmedResponse 반환 타입 정의
-function fetchCountryInfo(countryCode: string, status: CovidStatus) {
+function fetchCountryInfo(countryCode: string, status: CovidStatus): Promise<AxiosResponse<CovidStatusResponse[]>> {
   // status params: confirmed, recovered, deaths
   const url = `https://api.covid19api.com/country/${countryCode}/status/${status}`;
   return axios.get(url);
