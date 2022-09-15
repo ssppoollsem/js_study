@@ -32,7 +32,22 @@ export interface CovidSummaryResponse {
   Message: string;
 }
 
-export interface CovidStatusResponse {
+// 실습1. 내가 했던거
+// export interface CovidStatusResponse {
+//   Cases: number;
+//   City: string;
+//   CityCode: string;
+//   Country: string;
+//   CountryCode: string;
+//   Date: string;
+//   Lat: string;
+//   Lon: string;
+//   Province: string;
+//   Status: string;
+// }
+
+// 실습1. 풀이
+interface CountrySummaryInfo {
   Cases: number;
   City: string;
   CityCode: string;
@@ -44,3 +59,5 @@ export interface CovidStatusResponse {
   Province: string;
   Status: string;
 }
+
+export type CountrySummaryResponse = CountrySummaryInfo[];
