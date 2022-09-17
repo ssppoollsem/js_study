@@ -3,16 +3,16 @@
 // // 변수, 함수 임포트 문법
 // import {} from '파일 상대 경로';
 
-import axios, { Axios, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { Chart } from 'chart.js';
 // 타입 모듈
-import { CovidSummaryResponse, CountrySummaryResponse } from './covid/index';
+import { CovidSummaryResponse, CountrySummaryResponse, Country, CountrySummaryInfo } from './covid/index';
 
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
 }
-function getUnixTimestamp(date: Date) {
+function getUnixTimestamp(date: Date | string) {
   return new Date(date).getTime();
 }
 
@@ -57,9 +57,9 @@ enum CovidStatus {
 }
 
 // 실습1 deathResponse, recoveredResponse, confirmedResponse 반환 타입 정의
-function fetchCountryInfo(countryCode: string, status: CovidStatus): Promise<AxiosResponse<CountrySummaryResponse>> {
+function fetchCountryInfo(countryName: string, status: CovidStatus): Promise<AxiosResponse<CountrySummaryResponse>> {
   // status params: confirmed, recovered, deaths
-  const url = `https://api.covid19api.com/country/${countryCode}/status/${status}`;
+  const url = `https://api.covid19api.com/country/${countryName}/status/${status}`;
   return axios.get(url);
 }
 
@@ -74,7 +74,7 @@ function initEvents() {
   rankList.addEventListener('click', handleListClick);
 }
 
-async function handleListClick(event: any) {
+async function handleListClick(event: MouseEvent) {
   let selectedId;
   if (event.target instanceof HTMLParagraphElement || event.target instanceof HTMLSpanElement) {
     selectedId = event.target.parentElement.id;
@@ -102,13 +102,13 @@ async function handleListClick(event: any) {
   isDeathLoading = false;
 }
 
-function setDeathsList(data: any) {
-  const sorted = data.sort((a: any, b: any) => getUnixTimestamp(b.Date) - getUnixTimestamp(a.Date));
-  sorted.forEach((value: any) => {
+function setDeathsList(data: CountrySummaryResponse) {
+  const sorted = data.sort((a: CountrySummaryInfo, b: CountrySummaryInfo) => getUnixTimestamp(b.Date) - getUnixTimestamp(a.Date));
+  sorted.forEach((value: CountrySummaryInfo) => {
     const li = document.createElement('li');
     li.setAttribute('class', 'list-item-b flex align-center');
     const span = document.createElement('span');
-    span.textContent = value.Cases;
+    span.textContent = value.Cases.toString();
     span.setAttribute('class', 'deaths');
     const p = document.createElement('p');
     p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
@@ -122,17 +122,17 @@ function clearDeathList() {
   deathsList.innerHTML = null;
 }
 
-function setTotalDeathsByCountry(data: any) {
-  deathsTotal.innerText = data[0].Cases;
+function setTotalDeathsByCountry(data: CountrySummaryResponse) {
+  deathsTotal.innerText = data[0].Cases.toString();
 }
 
-function setRecoveredList(data: any) {
-  const sorted = data.sort((a: any, b: any) => getUnixTimestamp(b.Date) - getUnixTimestamp(a.Date));
-  sorted.forEach((value: any) => {
+function setRecoveredList(data: CountrySummaryResponse) {
+  const sorted = data.sort((a: CountrySummaryInfo, b: CountrySummaryInfo) => getUnixTimestamp(b.Date) - getUnixTimestamp(a.Date));
+  sorted.forEach((value: CountrySummaryInfo) => {
     const li = document.createElement('li');
     li.setAttribute('class', 'list-item-b flex align-center');
     const span = document.createElement('span');
-    span.textContent = value.Cases;
+    span.textContent = value.Cases.toString();
     span.setAttribute('class', 'recovered');
     const p = document.createElement('p');
     p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
@@ -146,8 +146,8 @@ function clearRecoveredList() {
   recoveredList.innerHTML = null;
 }
 
-function setTotalRecoveredByCountry(data: any) {
-  recoveredTotal.innerText = data[0].Cases;
+function setTotalRecoveredByCountry(data: CountrySummaryResponse) {
+  recoveredTotal.innerText = data[0].Cases.toString();
 }
 
 function startLoadingAnimation() {
@@ -197,25 +197,25 @@ function setChartData(data: any) {
 }
 
 function setTotalConfirmedNumber(data: CovidSummaryResponse) {
-  confirmedTotal.innerText = data.Countries.reduce((total: any, current: any) => (total += current.TotalConfirmed), 0);
+  confirmedTotal.innerText = data.Countries.reduce((total: number, current: Country) => (total += current.TotalConfirmed), 0).toString();
 }
 
-function setTotalDeathsByWorld(data: any) {
-  deathsTotal.innerText = data.Countries.reduce((total: any, current: any) => (total += current.TotalDeaths), 0);
+function setTotalDeathsByWorld(data: CovidSummaryResponse) {
+  deathsTotal.innerText = data.Countries.reduce((total: number, current: Country) => (total += current.TotalDeaths), 0).toString();
 }
 
-function setTotalRecoveredByWorld(data: any) {
-  recoveredTotal.innerText = data.Countries.reduce((total: any, current: any) => (total += current.TotalRecovered), 0);
+function setTotalRecoveredByWorld(data: CovidSummaryResponse) {
+  recoveredTotal.innerText = data.Countries.reduce((total: number, current: Country) => (total += current.TotalRecovered), 0).toString();
 }
 
-function setCountryRanksByConfirmedCases(data: any) {
-  const sorted = data.Countries.sort((a: any, b: any) => b.TotalConfirmed - a.TotalConfirmed);
-  sorted.forEach((value: any) => {
+function setCountryRanksByConfirmedCases(data: CovidSummaryResponse) {
+  const sorted = data.Countries.sort((a: Country, b: Country) => b.TotalConfirmed - a.TotalConfirmed);
+  sorted.forEach((value: Country) => {
     const li = document.createElement('li');
     li.setAttribute('class', 'list-item flex align-center');
     li.setAttribute('id', value.Slug);
     const span = document.createElement('span');
-    span.textContent = value.TotalConfirmed;
+    span.textContent = value.TotalConfirmed.toString();
     span.setAttribute('class', 'cases');
     const p = document.createElement('p');
     p.setAttribute('class', 'country');
@@ -226,7 +226,7 @@ function setCountryRanksByConfirmedCases(data: any) {
   });
 }
 
-function setLastUpdatedTimestamp(data: any) {
+function setLastUpdatedTimestamp(data: CovidSummaryResponse) {
   lastUpdatedTime.innerText = new Date(data.Date).toLocaleString();
 }
 

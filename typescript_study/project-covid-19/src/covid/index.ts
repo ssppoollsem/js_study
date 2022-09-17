@@ -1,6 +1,6 @@
 // 타입들을 모아둔 파일
 
-interface Country {
+export interface Country {
   Country: string;
   CountryCode: string;
   Date: string;
@@ -47,7 +47,7 @@ export interface CovidSummaryResponse {
 // }
 
 // 실습1. 풀이
-interface CountrySummaryInfo {
+export interface CountrySummaryInfo {
   Cases: number;
   City: string;
   CityCode: string;
