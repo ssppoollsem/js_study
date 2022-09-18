@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "target": "ES5",
-    "outDir": "./built",
+    "outDir": "./dist",
     "moduleResolution": "Node",
     "lib": ["es2015", "DOM", "DOM.Iterable"],
     "noImplicitAny": true // 타입을 지정하지 않는 경우 any라도 추가해야한다.

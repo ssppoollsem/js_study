@@ -73,7 +73,6 @@ function createSpinnerElement(id) {
 }
 // state
 var isDeathLoading = false;
-var isRecoveredLoading = false;
 // api
 function fetchCovidSummary() {
     var url = 'https://api.covid19api.com/summary';
@@ -209,7 +208,8 @@ function setupData() {
     });
 }
 function renderChart(data, labels) {
-    var ctx = $('#lineChart').getContext('2d');
+    var lineChart = $('#lineChart');
+    var ctx = lineChart.getContext('2d');
     chart_js_1.Chart.defaults.color = '#f5eaea';
     chart_js_1.Chart.defaults.font.family = 'Exo 2';
     new chart_js_1.Chart(ctx, {
