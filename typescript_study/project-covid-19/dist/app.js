@@ -97,8 +97,19 @@ function startApp() {
 }
 // events
 function initEvents() {
+    // strict 옵션 - null 타입체크
+    if (!rankList) {
+        return;
+    }
     rankList.addEventListener('click', handleListClick);
 }
+// 타입들간의 상위 하위 관계
+// const a: Element;
+// const b: HTMLElement;
+// const c: HTMLDivElement;
+// const evt1: Event;
+// const evt2: UIEvent;
+// const evt3: MouseEvent;
 function handleListClick(event) {
     return __awaiter(this, void 0, void 0, function () {
         var selectedId, deathResponse, recoveredResponse, confirmedResponse;
@@ -106,7 +117,7 @@ function handleListClick(event) {
             switch (_a.label) {
                 case 0:
                     if (event.target instanceof HTMLParagraphElement || event.target instanceof HTMLSpanElement) {
-                        selectedId = event.target.parentElement.id;
+                        selectedId = event.target.parentElement ? event.target.parentElement.id : undefined;
                     }
                     if (event.target instanceof HTMLLIElement) {
                         selectedId = event.target.id;
@@ -151,7 +162,8 @@ function setDeathsList(data) {
         p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
         li.appendChild(span);
         li.appendChild(p);
-        deathsList.appendChild(li);
+        // deathsList ? deathsList.appendChild(li) : undefined;
+        deathsList.appendChild(li); // deathsList! => deathsList는 null이 아니다라는 뜻 (non-Assertion은 사용시 주의해야된다.)
     });
 }
 function clearDeathList() {

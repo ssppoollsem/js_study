@@ -56,7 +56,7 @@ enum CovidStatus {
 }
 
 // 실습1 deathResponse, recoveredResponse, confirmedResponse 반환 타입 정의
-function fetchCountryInfo(countryName: string, status: CovidStatus): Promise<AxiosResponse<CountrySummaryResponse>> {
+function fetchCountryInfo(countryName: string | undefined, status: CovidStatus): Promise<AxiosResponse<CountrySummaryResponse>> {
   // status params: confirmed, recovered, deaths
   const url = `https://api.covid19api.com/country/${countryName}/status/${status}`;
   return axios.get(url);
@@ -70,13 +70,26 @@ function startApp() {
 
 // events
 function initEvents() {
+  // strict 옵션 - null 타입체크
+  if (!rankList) {
+    return;
+  }
   rankList.addEventListener('click', handleListClick);
 }
 
-async function handleListClick(event: MouseEvent) {
+// 타입들간의 상위 하위 관계
+// const a: Element;
+// const b: HTMLElement;
+// const c: HTMLDivElement;
+
+// const evt1: Event;
+// const evt2: UIEvent;
+// const evt3: MouseEvent;
+
+async function handleListClick(event: Event) {
   let selectedId;
   if (event.target instanceof HTMLParagraphElement || event.target instanceof HTMLSpanElement) {
-    selectedId = event.target.parentElement.id;
+    selectedId = event.target.parentElement ? event.target.parentElement.id : undefined;
   }
   if (event.target instanceof HTMLLIElement) {
     selectedId = event.target.id;
@@ -113,7 +126,8 @@ function setDeathsList(data: CountrySummaryResponse) {
     p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
     li.appendChild(span);
     li.appendChild(p);
-    deathsList.appendChild(li);
+    // deathsList ? deathsList.appendChild(li) : undefined;
+    deathsList!.appendChild(li); // deathsList! => deathsList는 null이 아니다라는 뜻 (non-Assertion은 사용시 주의해야된다.)
   });
 }
 
