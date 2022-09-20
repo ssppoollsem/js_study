@@ -43,14 +43,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var axios_1 = require("axios");
 var chart_js_1 = require("chart.js");
 // utils
+// 타입을 정의하지 않으면 HTMLDivElement가 디폴트가 된다.
 function $(selector) {
-    return document.querySelector(selector);
+    var element = document.querySelector(selector);
+    return element;
 }
 function getUnixTimestamp(date) {
     return new Date(date).getTime();
 }
 // DOM
 // let a: Element | HTMLElement | HTMLParagraphElement;
+var temp = $('.abc');
 var confirmedTotal = $('.confirmed-total');
 var deathsTotal = $('.deaths');
 var recoveredTotal = $('.recovered');
@@ -167,7 +170,9 @@ function setDeathsList(data) {
     });
 }
 function clearDeathList() {
-    deathsList.innerHTML = null;
+    if (!deathsList)
+        return;
+    deathsList.innerHTML = '';
 }
 function setTotalDeathsByCountry(data) {
     deathsTotal.innerText = data[0].Cases.toString();
@@ -184,11 +189,18 @@ function setRecoveredList(data) {
         p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
         li.appendChild(span);
         li.appendChild(p);
-        recoveredList.appendChild(li);
+        // if (!recoveredList) return;
+        recoveredList === null || recoveredList === void 0 ? void 0 : recoveredList.appendChild(li);
+        // recoveredList?.appendChild(li) 를 풀어쓰면 아래와 같다.
+        // if (recoveredList === null || recoveredList === undefined) {
+        //   return;
+        // } else {
+        //   recoveredList.appendChild(li);
+        // }
     });
 }
 function clearRecoveredList() {
-    recoveredList.innerHTML = null;
+    recoveredList.innerHTML = '';
 }
 function setTotalRecoveredByCountry(data) {
     recoveredTotal.innerText = data[0].Cases.toString();
