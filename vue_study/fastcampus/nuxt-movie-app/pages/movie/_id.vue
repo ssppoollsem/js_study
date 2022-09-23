@@ -12,20 +12,11 @@
           <div class="skeleton etc"></div>
         </div>
       </div>
-      <Loader
-        :size="3"
-        :z-index="9"
-        fixed />
+      <Loader :size="3" :z-index="9" fixed />
     </template>
-    <div
-      v-else
-      class="movie-details">
-      <div
-        :style="{ backgroundImage: `url(${requestDiffSizeImage(theMovie.Poster)})` }"
-        class="poster">
-        <Loader
-          v-if="imageLoading"
-          absolute />
+    <div v-else class="movie-details">
+      <div :style="{ backgroundImage: `url(${requestDiffSizeImage(theMovie.Poster)})` }" class="poster">
+        <Loader v-if="imageLoading" absolute />
       </div>
       <div class="specs">
         <div class="title">
@@ -42,14 +33,8 @@
         <div class="ratings">
           <h3>Ratings</h3>
           <div class="rating-wrap">
-            <div
-              v-for="{ Source: name, Value: score } in theMovie.Ratings"
-              :key="name"
-              :title="name"
-              class="rating">
-              <img
-                :src="`https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/${name}.png`"
-                :alt="name" />
+            <div v-for="{ Source: name, Value: score } in theMovie.Ratings" :key="name" :title="name" class="rating">
+              <img :src="`https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/${name}.png`" :alt="name" />
               <span>{{ score }}</span>
             </div>
           </div>
@@ -76,21 +61,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import Loader from '~/components/Loader'
+import { mapState } from 'vuex';
+import Loader from '~/components/Loader';
 
 export default {
   components: {
-    Loader
+    Loader,
   },
   async asyncData({ store, params }) {
     await store.dispatch('movie/searchMovieWithId', {
-      id: params.id
-    })
+      id: params.id,
+    });
     return {
       // data() 있는걸 옮김
-      imageLoading: true
-    }
+      imageLoading: true,
+    };
   },
   // data() {
   //   return {
@@ -98,40 +83,36 @@ export default {
   //   }
   // },
   computed: {
-    ...mapState('movie', [
-      'loading',
-      'theMovie'
-    ])
+    ...mapState('movie', ['loading', 'theMovie']),
   },
   methods: {
     requestDiffSizeImage(url, size = 700) {
       // 잘못된 URL(Poster)인 경우.
       if (!url || url === 'N/A') {
-        this.imageLoading = false
-        return ''
+        this.imageLoading = false;
+        return '';
       }
-      const src = url.replace('SX300', `SX${size}`)
+      const src = url.replace('SX300', `SX${size}`);
       // 정상적인 URL인 경우.
-      this.$loadImage(src)
-        .then(() => {
-          this.imageLoading = false
-        })
-      return src
-    }
+      this.$loadImage(src).then(() => {
+        this.imageLoading = false;
+      });
+      return src;
+    },
   },
   head() {
     return {
       meta: [
-        { hid: 'og:type', propery: 'og:type', content: 'website' },
-        { hid: 'og:site_name', propery: 'og:site_name', content: 'Nuxt Movie App' },
-        { hid: 'og:title', propery: 'og:title', content: this.theMovie.Title },
-        { hid: 'og:description', propery: 'og:description', content: this.theMovie.Plot },
-        { hid: 'og:image', propery: 'og:image', content: this.theMovie.Poster },
-        { hid: 'og:url', propery: 'og:url', content: `${process.env.CLIENT_URL}${this.$route.fullPath}`  },
-      ]
-    }
-  }
-}
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt Movie App' },
+        { hid: 'og:title', property: 'og:title', content: this.theMovie.Title },
+        { hid: 'og:description', property: 'og:description', content: this.theMovie.Plot },
+        { hid: 'og:image', property: 'og:image', content: this.theMovie.Poster },
+        { hid: 'og:url', property: 'og:url', content: `${process.env.CLIENT_URL}${this.$route.fullPath}` },
+      ],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -150,8 +131,8 @@ export default {
     flex-grow: 1;
   }
   .skeleton {
-    border-radius: 10px;
     background-color: $gray-200;
+    border-radius: 10px;
     &.title {
       width: 80%;
       height: 70px;
@@ -177,31 +158,31 @@ export default {
   display: flex;
   color: $gray-600;
   .poster {
+    position: relative;
+    flex-shrink: 0;
     width: 500px;
     height: 500px * 3/2;
     margin-right: 70px;
-    border-radius: 10px;
     background-color: $gray-200;
-    background-size: cover;
     background-position: center;
-    position: relative;
-    flex-shrink: 0;
+    background-size: cover;
+    border-radius: 10px;
   }
   .specs {
     flex-grow: 1;
     .title {
-      color: $black;
-      font-family: "Oswald", sans-serif;
-      font-size: 70px;
-      line-height: 1;
       margin-bottom: 30px;
+      color: $black;
+      font-size: 70px;
+      font-family: 'Oswald', sans-serif;
+      line-height: 1;
     }
     .labels {
       color: $primary;
       span {
         &::after {
-          content: "\00b7";
           margin: 0 6px;
+          content: '\00b7';
         }
         &:last-child::after {
           display: none;
@@ -219,8 +200,8 @@ export default {
           align-items: center;
           margin-right: 32px;
           img {
-            height: 30px;
             flex-shrink: 0;
+            height: 30px;
             margin-right: 6px;
           }
         }
@@ -229,8 +210,8 @@ export default {
     h3 {
       margin: 24px 0 6px;
       color: $black;
-      font-family: "Oswald", sans-serif;
       font-size: 20px;
+      font-family: 'Oswald', sans-serif;
     }
   }
   @include media-breakpoint-down(xl) {
