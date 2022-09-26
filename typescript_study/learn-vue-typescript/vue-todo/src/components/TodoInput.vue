@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from "vue";
 
 export default Vue.extend({
   props: {
@@ -20,10 +20,10 @@ export default Vue.extend({
     handleInput(event: InputEvent) {
       // if (!event.target) return;
       const eventTarget = event.target as HTMLInputElement;
-      this.$emit('input', eventTarget.value);
+      this.$emit("input", eventTarget.value);
     },
     addTodo() {
-      this.$emit('add');
+      this.$emit("add");
     },
   },
 });
