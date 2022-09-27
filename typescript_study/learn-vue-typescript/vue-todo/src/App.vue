@@ -4,11 +4,7 @@
       <h1>Vue Todo with Typescript</h1>
     </header>
     <main>
-      <TodoInput
-        :item="todoText"
-        @input="updateTodoText"
-        @add="addTodoItem"
-      ></TodoInput>
+      <TodoInput :item="todoText" @input="updateTodoText" @add="addTodoItem"></TodoInput>
       <div>
         <TodoListItem></TodoListItem>
         <ul>
@@ -22,15 +18,15 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import TodoInput from "./components/TodoInput.vue";
-import TodoListItem from "./components/TodoListItem.vue";
+import Vue from 'vue';
+import TodoInput from './components/TodoInput.vue';
+import TodoListItem from './components/TodoListItem.vue';
 
 export default Vue.extend({
   components: { TodoInput, TodoListItem },
   data() {
     return {
-      todoText: "",
+      todoText: '',
     };
   },
   methods: {
@@ -43,7 +39,7 @@ export default Vue.extend({
       this.initTodoText();
     },
     initTodoText() {
-      this.todoText = "";
+      this.todoText = '';
     },
   },
 });
