@@ -9,11 +9,9 @@ import ListItem from '../components/ListItem.vue';
 
 export default {
   components: {
-    ListItem
+    ListItem,
   },
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

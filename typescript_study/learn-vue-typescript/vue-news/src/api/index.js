@@ -5,7 +5,7 @@ const api = {
   ask: 'https://api.hnpwa.com/v0/ask/1.json',
   jobs: 'https://api.hnpwa.com/v0/jobs/1.json',
   user: 'https://api.hnpwa.com/v0/user/',
-  item: 'https://api.hnpwa.com/v0/item/'
+  item: 'https://api.hnpwa.com/v0/item/',
 };
 
 function fetchNews() {
@@ -35,11 +35,4 @@ function fetchList(type) {
   return axios.get(url);
 }
 
-export {
-  fetchNews,
-  fetchAsk,
-  fetchJobs,
-  fetchUser,
-  fetchItem,
-  fetchList,
-}
+export { fetchNews, fetchAsk, fetchJobs, fetchUser, fetchItem, fetchList };
