@@ -1,4 +1,4 @@
-import { fetchNews, fetchAsk, fetchJobs, fetchUser, fetchItem, fetchList } from '../api/index.js';
+import { fetchNews, fetchAsk, fetchJobs, fetchUser, fetchItem, fetchList } from '../api/index';
 
 export default {
   FETCH_NEWS({ commit }) {
