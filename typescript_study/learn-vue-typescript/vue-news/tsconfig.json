@@ -6,6 +6,7 @@
     "noImplicitAny": true,
     "allowJs": true,
     "jsx": "preserve",
+    "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,9 +19,7 @@
       "webpack-env"
     ],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
     "lib": [
       "esnext",

@@ -6,7 +6,7 @@
 
 <script>
 import ListItem from '../components/ListItem.vue';
-import { fetchNews } from '@/api';
+import { fetchNews } from '../api';
 
 export default {
   components: {
@@ -20,6 +20,7 @@ export default {
   methods: {
     async fetchNewsItems() {
       const response = await fetchNews();
+      console.log(response.data);
       this.newsItems = response.data;
     },
   },

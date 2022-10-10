@@ -22,27 +22,32 @@
           <router-link :to="`/user/${news.user}`" class="link-text">{{ news.user }}</router-link>
         </small>
         <small v-if="news.time_ago" class="link-text">
-          {{ news.time_ago }}
+          {{ news.time_ago.concat(',2021') }}
         </small>
       </div>
     </li>
   </ul>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue, { PropType } from 'vue';
+import { NewsItem } from '../api';
+export default Vue.extend({
   props: {
     items: {
-      type: Array,
+      type: Array as PropType<NewsItem[]>,
       required: true,
     },
   },
   computed: {
-    listItems() {
+    timeAgo(): string {
+      return this.items;
+    },
+    listItems(): any {
       return this.$store.getters.fetchedList;
     },
   },
-};
+});
 </script>
 
 <style scoped>
