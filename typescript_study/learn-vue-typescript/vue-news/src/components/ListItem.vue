@@ -22,7 +22,8 @@
           <router-link :to="`/user/${news.user}`" class="link-text">{{ news.user }}</router-link>
         </small>
         <small v-if="news.time_ago" class="link-text">
-          {{ news.time_ago.concat(',2021') }}
+          <!-- {{ news.time_ago.concat(',2021') }} -->
+          {{ timeAgo(news) }}
         </small>
       </div>
     </li>
@@ -39,10 +40,15 @@ export default Vue.extend({
       required: true,
     },
   },
-  computed: {
-    timeAgo(): string {
-      return this.items;
+  methods: {
+    timeAgo(news: NewsItem): string {
+      return news.time_ago.concat(', 2021');
     },
+  },
+  computed: {
+    // timeAgo(): string {
+    //   return this.items[0].time_ago.concat();
+    // },
     listItems(): any {
       return this.$store.getters.fetchedList;
     },
