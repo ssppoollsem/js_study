@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Example</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script type="text/javascript">
+            console.log(React);
+            console.log(ReactDOM);
+
+            // React.createElement(
+            //     type, // 태그이름 문자열 | 리엑트 컴포넌트 | React.Fragment
+            //     [props], // 리액트 컴포넌트에 넣어주는 데이터 객체
+            //     [...children] // 자식으로 넣어주는 요소들
+            // );
+
+            // 1. 태그이름 문자열 type
+            // ReactDOM.render(React.createElement('h1', null, `type이 "태그 이름 문자열" 입니다.`), document.querySelector('#root'));
+
+            // 2. 리액트 컴포넌트 type
+            // const Component = () => {
+            //     return React.createElement('p', null, `type이 "React 컴포넌트" 입니다.`);
+            // };
+            // ReactDOM.render(React.createElement(Component, null, null), document.querySelector('#root'));
+
+            // 3. React.Fragment
+            // ReactDOM.render(React.createElement(React.Fragment, null, `type이 "React Fragment" 입니다.`), document.querySelector('#root'));
+
+            // 4. 복잡한 리액트 엘리먼트 모임
+            // <div>
+            //     <div>
+            //         <h1>주제</h1>
+            //         <ul>
+            //             <li>리액트</li>
+            //             <li>뷰</li>
+            //         </ul>
+            //     </div>
+            // </div>
+            ReactDOM.render(
+                React.createElement(
+                    'div',
+                    null,
+                    React.createElement(
+                        'div',
+                        null,
+                        React.createElement('h1', null, '주제'),
+                        React.createElement('ul', null, React.createElement('li', null, '리액트'), React.createElement('li', null, '뷰'))
+                    )
+                ),
+                document.querySelector('#root')
+            );
+        </script>
+    </body>
+</html>
