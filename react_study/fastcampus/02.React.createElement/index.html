@@ -10,6 +10,7 @@
         <div id="root"></div>
         <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script type="text/javascript">
             console.log(React);
             console.log(ReactDOM);
@@ -42,17 +43,18 @@
             //         </ul>
             //     </div>
             // </div>
+        </script>
+        <script type="text/babel">
             ReactDOM.render(
-                React.createElement(
-                    'div',
-                    null,
-                    React.createElement(
-                        'div',
-                        null,
-                        React.createElement('h1', null, '주제'),
-                        React.createElement('ul', null, React.createElement('li', null, '리액트'), React.createElement('li', null, '뷰'))
-                    )
-                ),
+                <div a="a">
+                    <div>
+                        <h1>주제</h1>
+                        <ul>
+                            <li>리액트</li>
+                            <li>뷰</li>
+                        </ul>
+                    </div>
+                </div>,
                 document.querySelector('#root')
             );
         </script>
