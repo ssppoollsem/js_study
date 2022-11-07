@@ -10,7 +10,9 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 ```
 
-### Ch 2. JSX 문법
+### Ch 2
+
+## Ch 2-3. JSX 문법
 
 -   최상위 요소가 하나여야 한다.
 -   최상위 요소 리턴하는 경우, ()로 감싸야 한다.
@@ -65,3 +67,11 @@ ReactDOM.render(
 -   style을 이용해 인라인 스타일링이 가능하다.
 -   class 대신 className을 사용해 class를 적용할 수 있다.
 -   자식요소가 있으면, 꼭 닫아야 하고, 자식요소가 없으면 열면서 닫아야 한다.
+
+---
+
+## Ch 2-4. Props와 State
+
+-   Props는 컴포넌트 외부에서 컴포넌트에게 주는 데이터이다.
+-   State는 컴포넌트 내부에서 변경할 수 있는 데이터이다.
+-   둘 다 변경이 발생하면, 랜더가 다시 일어날 수 있다.
