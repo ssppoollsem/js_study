@@ -83,3 +83,34 @@ ReactDOM.render(
 -   camelCase로만 사용할 수 있다. (onClick, onMouseEnter)
 -   이벤트에 연결된 자바스크립트 코드는 함수이다. (이벤트={함수}와 같이 쓴다.)
 -   실제 DOM 요소들에만 사용 가능하다. (리액트 컴포넌트에 사용하면, 그냥 props로 전달한다.)
+
+## Ch 2-6 Component Lifecycle
+
+![리액트 라이프 사이클 훅](https://velog.velcdn.com/images%2Fprotect-me%2Fpost%2F59348e73-97f8-414e-bea7-d5fbe799024a%2Fimage.png)
+
+### componentWillReceiveProps
+
+-   props를 새로 지정했을 때 바로 호출
+-   state의 변경에 반응하지 않음
+    ⇒ 여기서 prop의 값에 따라 state를 변경해야 한다면 setState를 이용해 state를 변경합니다.
+    ⇒ 그러면 다음 이벤트로 각각 가는 것이 아니라 한 번에 변경됩니다.
+
+### shouldComponentUpdate
+
+-   props만 변경되어도
+-   state만 변경되어도
+-   props & state 둘 다 변경되어도
+-   new Props 와 new State를 인자로 해서 호출
+-   return type이 boolen
+    : true이면 render
+    : false이면 render가 호출되지 않음
+    : 이 함수를 구현하지 않으면, 디폴트는 true
+
+### componentWillUpdate
+
+-   컴포넌트가 재렌더링 되기 직전에 불림
+-   여기선 setState 같은 것을 쓰면 안됨
+
+### componentDidUpdate (render 이후)
+
+-   컴포넌트가 재렌더링을 마치면 불림
