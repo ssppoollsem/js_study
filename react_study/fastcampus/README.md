@@ -92,8 +92,8 @@ ReactDOM.render(
 
 -   props를 새로 지정했을 때 바로 호출
 -   state의 변경에 반응하지 않음
-    ⇒ 여기서 prop의 값에 따라 state를 변경해야 한다면 setState를 이용해 state를 변경합니다.
-    ⇒ 그러면 다음 이벤트로 각각 가는 것이 아니라 한 번에 변경됩니다.
+    ⇒ 여기서 prop의 값에 따라 state를 변경해야 한다면 setState를 이용해 state를 변경한다.
+    ⇒ 그러면 다음 이벤트로 각각 가는 것이 아니라 한 번에 변경된다.
 
 ### shouldComponentUpdate
 
@@ -106,7 +106,7 @@ ReactDOM.render(
     : false이면 render가 호출되지 않음
     : 이 함수를 구현하지 않으면, 디폴트는 true
 
-### componentWillUpdate
+### componentWillUpdate =>(v16.3 이후 변경) getSnapshotBeforeUpdate
 
 -   컴포넌트가 재렌더링 되기 직전에 불림
 -   여기선 setState 같은 것을 쓰면 안됨
@@ -114,3 +114,7 @@ ReactDOM.render(
 ### componentDidUpdate (render 이후)
 
 -   컴포넌트가 재렌더링을 마치면 불림
+
+### componentDidCatch
+
+-   리액트 애플리케이션에서 발생하는 에러를 처리
