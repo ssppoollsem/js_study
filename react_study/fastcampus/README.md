@@ -84,6 +84,8 @@ ReactDOM.render(
 -   이벤트에 연결된 자바스크립트 코드는 함수이다. (이벤트={함수}와 같이 쓴다.)
 -   실제 DOM 요소들에만 사용 가능하다. (리액트 컴포넌트에 사용하면, 그냥 props로 전달한다.)
 
+---
+
 ## Ch 2-6 Component Lifecycle
 
 ![리액트 라이프 사이클 훅](https://velog.velcdn.com/images%2Fprotect-me%2Fpost%2F59348e73-97f8-414e-bea7-d5fbe799024a%2Fimage.png)
@@ -118,3 +120,15 @@ ReactDOM.render(
 ### componentDidCatch
 
 -   리액트 애플리케이션에서 발생하는 에러를 처리
+
+---
+
+## Ch 3-1 React Router
+
+### SPA 라우팅 과정
+
+1. 브라우저 최초에 '/' 경로로 요청을 하면,
+2. React Web App을 내려준다.
+3. 내려받은 React App에서 '/' 경로에 맞는 컴포넌트를 보여준다.
+4. React App에서 다른 페이지로 이동하는 동작을 수행하면,
+5. 새로운 경로에 맞는 컴포넌트를 보여준다.
