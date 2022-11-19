@@ -132,3 +132,11 @@ ReactDOM.render(
 3. 내려받은 React App에서 '/' 경로에 맞는 컴포넌트를 보여준다.
 4. React App에서 다른 페이지로 이동하는 동작을 수행하면,
 5. 새로운 경로에 맞는 컴포넌트를 보여준다.
+
+---
+
+## Ch 3-4 swtich (react-router-dom 6버전에서는 Switch가 Switch -> routes 변경)
+
+-   여러 Route중 순선대로 먼저 맞는 하나만 보여준다.
+-   exact를 뺄 수 있는 로직을 만들 수 있다.
+-   가장 마지막에 어디 path에도 맞지 않으면 보여지는 컴포넌트를 설정해서, 'Not Found' 페이지를 만들 수 있다.
