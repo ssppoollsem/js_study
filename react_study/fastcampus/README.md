@@ -123,7 +123,7 @@ ReactDOM.render(
 
 ---
 
-## Ch 3-1 React Router
+## Ch 4-1 React Router
 
 ### SPA 라우팅 과정
 
@@ -135,7 +135,7 @@ ReactDOM.render(
 
 ---
 
-## Ch 3-4 swtich (react-router-dom 6버전에서는 Switch가 Switch -> routes 변경)
+## Ch 4-4 swtich (react-router-dom 6버전에서는 Switch가 Switch -> routes 변경)
 
 -   여러 Route중 순선대로 먼저 맞는 하나만 보여준다.
 -   exact를 뺄 수 있는 로직을 만들 수 있다.
@@ -143,7 +143,7 @@ ReactDOM.render(
 
 ---
 
-## Ch 3-6 NavLink
+## Ch 4-6 NavLink
 
 -   import {NavLink} from 'react-router-dom';
 -   activeClassName, activeStyle 처럼 active 상태에 대한 스타일을 지정이 가능하다. (react-router-dom v6 이후 사라짐)
