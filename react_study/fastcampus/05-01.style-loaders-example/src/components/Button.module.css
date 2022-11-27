@@ -1,0 +1,14 @@
+.button {
+    margin: 0 1em;
+    padding: 0.25em 1em;
+    color: palegoldenrod;
+    font-size: 20px;
+    background: transparent;
+    border: 2px solid palegoldenrod;
+    border-radius: 3px;
+}
+
+.loading {
+    color: grey;
+    border: 2px solid grey;
+}
