@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// 하위 컴포넌트를 변경하기
 // export default function A() {
 //     const [value, setValue] = useState('아직 안바뀜');
 //     return (
@@ -50,7 +51,7 @@ import { useState } from 'react';
 //     );
 // }
 
-// 상위 컴포넌트로 props 보내기
+// 상위 컴포넌트를 변경하기
 export default function A() {
     const [value, setValue] = useState('아직 안바뀜');
     return (
