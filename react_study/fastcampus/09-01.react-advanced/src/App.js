@@ -1,5 +1,7 @@
 import './App.css';
 import React from 'react';
+import { useState } from 'react';
+import Modal from './components/Modal';
 
 // class Person extends React.PureComponent {
 //     // React.PureComponent와 동일한 기능
@@ -74,44 +76,68 @@ import React from 'react';
 //     };
 // }
 
-const Person = React.memo(({ name, age }) => {
-    console.log('Person render');
-    return (
-        <p>
-            {name} / {age}
-        </p>
-    );
-});
+// const Person = React.memo(({ name, age }) => {
+//     console.log('Person render');
+//     return (
+//         <p>
+//             {name} / {age}
+//         </p>
+//     );
+// });
+
+// function App() {
+//     const [state, setState] = React.useState({
+//         text: '',
+//         persons: [
+//             { id: 1, name: 'mark', age: 22 },
+//             { id: 2, name: 'ana', age: 42 },
+//         ],
+//     });
+
+//     const toPersonClick = React.useCallback(() => {}, []);
+
+//     const { text, persons } = state;
+//     return (
+//         <div>
+//             <input type="text" value={text} onChange={change} />
+//             <ul>
+//                 {persons.map((person) => {
+//                     return <Person {...person} key={person.id} onClick={toPersonClick} />;
+//                 })}
+//             </ul>
+//         </div>
+//     );
+
+//     function change(e) {
+//         setState({
+//             ...state,
+//             text: e.target.value,
+//         });
+//     }
+// }
 
 function App() {
-    const [state, setState] = React.useState({
-        text: '',
-        persons: [
-            { id: 1, name: 'mark', age: 22 },
-            { id: 2, name: 'ana', age: 42 },
-        ],
-    });
+    const [visible, setVisible] = useState(false);
+    const open = () => {
+        setVisible(true);
+    };
 
-    const toPersonClick = React.useCallback(() => {}, []);
+    const close = () => {
+        setVisible(false);
+    };
 
-    const { text, persons } = state;
     return (
         <div>
-            <input type="text" value={text} onChange={change} />
-            <ul>
-                {persons.map((person) => {
-                    return <Person {...person} key={person.id} onClick={toPersonClick} />;
-                })}
-            </ul>
+            <button onClick={open}>open</button>
+            {visible && (
+                <Modal>
+                    <div style={{ width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.5)' }} onClick={close}>
+                        Hello
+                    </div>
+                </Modal>
+            )}
         </div>
     );
-
-    function change(e) {
-        setState({
-            ...state,
-            text: e.target.value,
-        });
-    }
 }
 
 export default App;
