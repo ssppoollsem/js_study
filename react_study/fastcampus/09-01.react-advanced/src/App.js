@@ -2,6 +2,8 @@ import './App.css';
 import React from 'react';
 import { useState } from 'react';
 import Modal from './components/Modal';
+import { useRef } from 'react';
+import MyInput from './components/MyInput';
 
 // class Person extends React.PureComponent {
 //     // React.PureComponent와 동일한 기능
@@ -116,26 +118,41 @@ import Modal from './components/Modal';
 //     }
 // }
 
+// createPortal
+// function App() {
+//     const [visible, setVisible] = useState(false);
+//     const open = () => {
+//         setVisible(true);
+//     };
+
+//     const close = () => {
+//         setVisible(false);
+//     };
+
+//     return (
+//         <div>
+//             <button onClick={open}>open</button>
+//             {visible && (
+//                 <Modal>
+//                     <div style={{ width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.5)' }} onClick={close}>
+//                         Hello
+//                     </div>
+//                 </Modal>
+//             )}
+//         </div>
+//     );
+// }
+
+// forwardRef
 function App() {
-    const [visible, setVisible] = useState(false);
-    const open = () => {
-        setVisible(true);
+    const myInputRef = useRef();
+    const click = () => {
+        console.log(myInputRef.current.value);
     };
-
-    const close = () => {
-        setVisible(false);
-    };
-
     return (
         <div>
-            <button onClick={open}>open</button>
-            {visible && (
-                <Modal>
-                    <div style={{ width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.5)' }} onClick={close}>
-                        Hello
-                    </div>
-                </Modal>
-            )}
+            <MyInput ref={myInputRef} />
+            <button onClick={click}>send</button>
         </div>
     );
 }
