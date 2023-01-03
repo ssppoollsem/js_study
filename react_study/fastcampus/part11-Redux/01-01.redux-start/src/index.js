@@ -3,12 +3,28 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import store from './redux/store';
+import { addTodo } from './redux/actions';
+
+const unsubscribe = store.subscribe(() => {
+    console.log(store.getState());
+});
+
+// console.log(store);
+store.dispatch(addTodo('coding'));
+store.dispatch(addTodo('read book'));
+store.dispatch(addTodo('eat'));
+// console.log(store.getState());
+unsubscribe();
+store.dispatch(addTodo('coding'));
+store.dispatch(addTodo('read book'));
+store.dispatch(addTodo('eat'));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
