@@ -1,7 +1,17 @@
 import { Row, Col, Input, Button } from 'antd';
+import React, { useRef } from 'react';
+import { LoginReqType } from '../\btypes';
 import styles from './Signin.module.css';
 
-export default function Signin() {
+interface SigninProps {
+    login: (reqData: LoginReqType) => void;
+}
+
+const Signin: React.FC<SigninProps> = ({ login }) => {
+    type Input = /*unresolved*/ any;
+    const emailRef = useRef<Input>(null);
+    const passwordRef = useRef<Input>(null);
+
     return (
         <Row align="middle" className={styles.signin_row}>
             <Col span={24}>
@@ -18,17 +28,17 @@ export default function Signin() {
                             <span className={styles.required}> *</span>
                         </div>
                         <div className={styles.input_area}>
-                            <Input className={styles.input} placeholder="Email" autoComplete="email" name="email" />
+                            <Input className={styles.input} placeholder="Email" autoComplete="email" name="email" ref={emailRef} />
                         </div>
                         <div className={styles.password_title}>
                             Password
                             <span className={styles.required}> *</span>
                         </div>
                         <div className={styles.input_area}>
-                            <Input className={styles.input} type="password" autoComplete="current-password" name="email" />
+                            <Input className={styles.input} type="password" autoComplete="current-password" ref={passwordRef} />
                         </div>
                         <div className={styles.button_area}>
-                            <Button size="large" className={styles.button}>
+                            <Button size="large" className={styles.button} onClick={click}>
                                 Sign In
                             </Button>
                         </div>
@@ -37,4 +47,13 @@ export default function Signin() {
             </Col>
         </Row>
     );
-}
+
+    function click() {
+        const email = emailRef.current!.state.value;
+        const password = passwordRef.current!.state.value;
+
+        login({ email, password });
+    }
+};
+
+export default Signin;
