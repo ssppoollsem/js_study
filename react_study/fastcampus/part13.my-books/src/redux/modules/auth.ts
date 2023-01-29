@@ -3,6 +3,8 @@ import { createActions, handleActions } from 'redux-actions';
 import { LoginReqType } from '../../\btypes';
 import UserService from '../../services/UserService';
 import { put, takeEvery, call } from 'redux-saga/effects';
+import TokenService from '../../services/TokenService';
+import { push } from 'connected-react-router';
 
 interface AuthState {
     token: string | null;
@@ -51,11 +53,13 @@ function* loginSaga(action: Action<LoginReqType>) {
     try {
         yield put(pending());
         const token: string = yield call(UserService.login, action.payload);
+        TokenService.set(token);
 
         // localstorage
         yield put(success(token));
 
         // push
+        yield put(push('/'));
     } catch (error) {
         yield put(fail(new Error('INKNOWN_ERROR')));
     }
