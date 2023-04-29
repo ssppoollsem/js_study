@@ -1,0 +1,100 @@
+/* Signin.module.css */
+
+.signin_row {
+    height: 100vh;
+}
+
+.signin_title {
+    margin-top: 80px;
+    color: #642828;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.signin_subtitle {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.signin_underline {
+    width: 200px;
+    height: 6px;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    background: linear-gradient(to right, #803b32, #ddb49b);
+}
+
+.signin_contents {
+    width: 800px;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #f3f7f8;
+}
+
+.signin_bg {
+    width: 100%;
+}
+
+.email_title {
+    margin-top: 40px;
+    padding-left: 40px;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: Roboto;
+    text-align: left;
+}
+
+.password_title {
+    margin-top: 10px;
+    padding-left: 40px;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: Roboto;
+    text-align: left;
+}
+
+.required {
+    color: #971931;
+}
+
+.input_area {
+    padding-top: 10px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+}
+
+.input {
+    width: 100%;
+    font-family: Roboto;
+    border-width: 1px;
+    border-radius: 1px;
+}
+
+.button_area {
+    margin-top: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+    text-align: center;
+}
+
+.button {
+    width: 100%;
+    color: white;
+    text-transform: uppercase;
+    background-color: #28546a;
+    border-color: #28546a;
+    border-width: 2px;
+    border-radius: 1px;
+}
+
+.button:hover {
+    color: white;
+    background-color: #28546a;
+}
