@@ -54,6 +54,9 @@
   "devDependencies": {
     "@types/react-redux": "^7.1.25",
     "@types/react-router-dom": "^5.3.3",
-    "@types/redux-actions": "^2.6.2"
+    "@types/redux-actions": "^2.6.2",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.30",
+    "tailwindcss": "^3.3.3"
   }
 }
